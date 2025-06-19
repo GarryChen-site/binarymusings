@@ -9,6 +9,7 @@ tags: ["JavaScript", "Promise", "Async Programming", "Event Loop"]
 author: ["Garry Chen"]
 cover:
   image: images/shock wave.gif
+  hiddenInList: true
   caption: "Callback Hell"
 
 ---

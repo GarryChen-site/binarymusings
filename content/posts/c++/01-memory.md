@@ -9,6 +9,7 @@ tags: ["Modern C++", "Memory Management", "RAII"]
 author: ["Garry Chen"]
 cover:
   image: images/mm.webp
+  hiddenInList: true
   caption: "Memory Management in C++"
 
 ---

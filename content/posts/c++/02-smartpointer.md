@@ -9,6 +9,7 @@ tags: ["Modern C++", "Memory Management", "RAII", "Smart Pointer"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-02-00.jpg
+  hiddenInList: true
   caption: "Smart Pointer in C++"
 
 ---
