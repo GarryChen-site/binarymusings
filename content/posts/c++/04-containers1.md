@@ -10,7 +10,7 @@ author: ["Garry Chen"]
 cover:
   image: images/cpp-04-00.jpg
   hiddenInList: true
-  caption: "Move semantics"
+  caption: "Containers"
 
 ---
 
