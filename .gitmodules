@@ -7,3 +7,4 @@
 [submodule "code"]
 	path = code
 	url = https://github.com/GarryChen-site/medium-repo.git
+	branch = main
