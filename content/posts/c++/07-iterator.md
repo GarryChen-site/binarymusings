@@ -264,5 +264,6 @@ In short:
 This completes a fully functional line-based input stream iterator.
 
 
+---
 
 
