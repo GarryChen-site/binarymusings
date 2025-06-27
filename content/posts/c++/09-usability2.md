@@ -1,4 +1,18 @@
+---
+title: "Usability Improvement II"
+description: "Literals, Member Function"
+summary: Modern C++ Series - Part 09
+date: 2025-06-27
+series: ["C++"]
+weight: 1
+tags: ["Modern C++", "Literal", "Member Function", "Override", "Final"]
+author: ["Garry Chen"]
+cover:
+  image: images/cpp-09-00.jpg
+  hiddenInList: true
+  caption: "Literal"
 
+---
 
 
 # User-Defined Literals
@@ -122,7 +136,6 @@ Output:
 ```
 111000000
 ```
-
 
 
 
@@ -269,3 +282,4 @@ class D : public C {
 };
 ```
 
+---
