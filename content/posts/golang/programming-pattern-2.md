@@ -1,18 +1,22 @@
 ---
-title: "Error Handling"
-description: "Error handling in Go and how to manage the `if err != nil` pattern."
-summary: Go Programming Patterns - Part 2
+title: "Mastering Go Error Handling: From 'if err != nil' Hell to Modern Patterns"
+
+description: "Complete guide to Go error handling - tackle the 'if err != nil' problem, learn modern error wrapping with Go 1.13+, sentinel errors, and practical patterns for better error management in Go applications."
+
+summary: "Master Go error handling patterns including modern error wrapping, sentinel errors, resource cleanup with defer, and techniques to avoid 'if err != nil' hell."
+
 date: 2025-06-29
 series: ["Golang"]
 weight: 1
-tags: ["Golang", "Error Handling", "Error Check Hell","Resource Cleanup"]
+tags: ["Golang", "Error Handling", "Error Wrapping", "Sentinel Errors", "Go 1.13", "Best Practices", "Resource Cleanup", "Defer", "Error Patterns", "Clean Code"]
 author: ["Garry Chen"]
 cover:
   image: images/go-02-00.jpg
   hiddenInList: true
-  caption: "Error "
+  caption: "Error"
 
 ---
+
 **Error Handling has always been a problem that programming must face. If error handling is done well, the code’s stability will be very good. Different languages have different ways to handle errors. Go language is the same. In this article, we will discuss Go’s error entry and exit points, especially the maddening `if err != nil`.**
 
 Before formally discussing how to deal with Go code flooded with `if err != nil`, I want to first talk about error handling in programming. This allows everyone to understand error handling at a higher level.
@@ -93,7 +97,7 @@ Go supports multiple return values, so you can separate *business* results and *
 * Parameters are clearly inputs, and returning distinct results and errors clarifies function semantics.
 * If you want to ignore the error, you must explicitly do so, e.g., `_`.
 * Since `error` is an interface with only `Error() string`, you can define custom error types.
-* If a function can return multiple error types, you can switch on type, e.g.:
+* If a function can return multiple error types, you can switch on type (traditional approach):
 
   ```go
   if err != nil {
@@ -107,6 +111,24 @@ Go supports multiple return values, so you can separate *business* results and *
     default:
       ...
     }
+  }
+  ```
+
+* **Modern approach (Go 1.13+)** uses `errors.Is()` and `errors.As()` for better error checking:
+
+  ```go
+  import "errors"
+  
+  // Check for specific error values
+  if errors.Is(err, io.EOF) {
+      // handle EOF
+  }
+  
+  // Check for specific error types
+  var syntaxErr *json.SyntaxError
+
+  if errors.As(err, &syntaxErr) {
+      // handle json.SyntaxError
   }
   ```
 
@@ -334,23 +356,95 @@ func (e *authorizationError) Error() string {
 }
 ```
 
-Better yet, implement a `Cause()` method so callers can unwrap:
+Better yet, implement an `Unwrap()` method so callers can unwrap (Go 1.13+ style):
 
 ```go
-type causer interface {
-    Cause() error
-}
-
-func (e *authorizationError) Cause() error {
+func (e *authorizationError) Unwrap() error {
     return e.err
 }
 ```
 
-The good news here is that there is no need to write such code anymore, there is a third-party error library. The code example is as follows:
+## Modern Error Wrapping (Go 1.13+)
+
+**The recommended approach** is using built-in error wrapping:
+
+```go
+if err != nil {
+    return fmt.Errorf("read failed: %w", err)
+}
+```
+
+The `%w` verb wraps the error, preserving the original error for unwrapping.
+
+## Modern Error Checking (Go 1.13+)
+
+Instead of type switching, use `errors.Is()` and `errors.As()`:
+
+```go
+import "errors"
+
+// Check for specific error values
+if errors.Is(err, io.EOF) {
+    // handle EOF specifically
+}
+
+// Check for specific error types
+var syntaxErr *json.SyntaxError
+
+if errors.As(err, &syntaxErr) {
+    // handle json.SyntaxError specifically
+    fmt.Printf("JSON syntax error at byte offset %d", syntaxErr.Offset)
+}
+
+// Check for custom error types
+var authErr *authorizationError
+
+if errors.As(err, &authErr) {
+    fmt.Printf("authorization failed during %s", authErr.operation)
+}
+```
+
+## Sentinel Errors Pattern
+
+Define package-level error variables for common errors:
+
+```go
+var (
+    ErrNotFound = errors.New("not found")
+    ErrInvalidInput = errors.New("invalid input")
+    ErrTimeout = errors.New("operation timed out")
+)
+
+func FindUser(id string) (*User, error) {
+    if id == "" {
+        return nil, fmt.Errorf("user lookup failed: %w", ErrInvalidInput)
+    }
+    // ... lookup logic
+    if !found {
+        return nil, fmt.Errorf("user %s: %w", id, ErrNotFound)
+    }
+    return user, nil
+}
+
+// Usage
+user, err := FindUser("123")
+if err != nil {
+    if errors.Is(err, ErrNotFound) {
+        // handle not found case
+    } else if errors.Is(err, ErrInvalidInput) {
+        // handle invalid input
+    } else {
+        // handle other errors
+    }
+}
+```
+
+## Third-Party Libraries (Legacy)
+
+Before Go 1.13, the `github.com/pkg/errors` library was popular:
 
 ```go
 import "github.com/pkg/errors"
-
 
 if err != nil {
     return errors.Wrap(err, "read failed")
@@ -363,6 +457,8 @@ default:
     // unknown error
 }
 ```
+
+**Note:** While `github.com/pkg/errors` still works, the built-in error wrapping in Go 1.13+ is now preferred for new projects.
 
 
 
