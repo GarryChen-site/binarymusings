@@ -1,12 +1,14 @@
-
 ---
-title: "Usability Improvement I"
-description: "Automatic Type Deduction and Initialization"
-summary: Modern C++ Series - Part 08
+title: "Modern C++: Auto, Type Deduction & Initialization"
+
+description: "Modern C++ features - auto, decltype, type deduction, uniform initialization, and C++11/14/17 usability improvements with examples."
+
+summary: "Complete guide to modern C++ features: auto, decltype, type deduction, uniform initialization, and usability improvements."
+
 date: 2025-06-25
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "Automatic Type Deduction", "Initialization", "C++11", "C++14", "C++17"]
+tags: ["Modern C++", "Auto", "Type Deduction", "C++11", "Initialization"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-08-00.jpg

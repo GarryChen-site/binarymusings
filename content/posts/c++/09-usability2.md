@@ -1,11 +1,14 @@
 ---
-title: "Usability Improvement II"
-description: "Literals, Member Function"
-summary: Modern C++ Series - Part 09
+title: "Modern C++: Literals, Override & Function Control"
+
+description: "Modern C++ features - user-defined literals, override/final specifiers, default/delete functions, and C++11/14 language improvements."
+
+summary: "Complete guide to modern C++ features: user-defined literals, override/final specifiers, and function control mechanisms."
+
 date: 2025-06-27
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "Literal", "Member Function", "Override", "Final"]
+tags: ["Modern C++", "User-Defined Literals", "Override", "Final", "C++11"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-09-00.jpg

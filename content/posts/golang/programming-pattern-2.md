@@ -1,14 +1,14 @@
 ---
-title: "Mastering Go Error Handling: From 'if err != nil' Hell to Modern Patterns"
+title: "Go Error Handling: Modern Patterns & Best Practices"
 
-description: "Complete guide to Go error handling - tackle the 'if err != nil' problem, learn modern error wrapping with Go 1.13+, sentinel errors, and practical patterns for better error management in Go applications."
+description: "Go error handling with modern Go 1.13+ patterns, error wrapping, sentinel errors, and techniques to avoid 'if err != nil' hell."
 
-summary: "Master Go error handling patterns including modern error wrapping, sentinel errors, resource cleanup with defer, and techniques to avoid 'if err != nil' hell."
+summary: "Go error handling patterns including modern error wrapping, sentinel errors, resource cleanup with defer, and techniques to avoid 'if err != nil' hell."
 
 date: 2025-06-29
 series: ["Golang"]
 weight: 1
-tags: ["Golang", "Error Handling", "Error Wrapping", "Sentinel Errors", "Go 1.13", "Best Practices", "Resource Cleanup", "Defer", "Error Patterns", "Clean Code"]
+tags: ["Golang", "Error Handling", "Go 1.13", "Error Wrapping", "Best Practices"]
 author: ["Garry Chen"]
 cover:
   image: images/go-02-00.jpg

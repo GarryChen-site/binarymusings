@@ -1,11 +1,14 @@
 ---
-title: "Heap, Stack, RAII"
-description: How to Manage Resources in C++?
-summary: Modern C++ Series - Part 01
+title: "C++ Memory Management: Heap, Stack & RAII Patterns"
+
+description: "C++ memory management with heap vs stack allocation, RAII patterns, smart pointers, and avoiding memory leaks. Essential modern C++ guide."
+
+summary: "Heap vs Stack allocation, RAII patterns for resource management, and best practices to avoid memory leaks."
+
 date: 2025-06-09
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "Memory Management", "RAII"]
+tags: ["C++", "Memory Management", "RAII", "Stack Allocation", "Modern C++"]
 author: ["Garry Chen"]
 cover:
   image: images/mm.webp

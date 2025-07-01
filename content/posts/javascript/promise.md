@@ -1,11 +1,14 @@
 ---
-title: "Understanding the Asynchronous Programming System"
-description: Top-down approach
-summary: Some essential principles of asynchronous programming
+title: "JavaScript Async Programming: From Callbacks to Promises"
+
+description: "Deep dive into async programming fundamentals - hardware latency, event loops, callback hell, and how JavaScript Promises solve concurrency challenges."
+
+summary: "Comprehensive guide to JavaScript async programming - from hardware limitations and CPU latency to event loops, callback hell, and the evolution of Promises for better concurrency."
+
 date: 2021-11-13
 series: ["JavaScript"]
 weight: 1
-tags: ["JavaScript", "Promise", "Async Programming", "Event Loop"]
+tags: ["JavaScript", "Async Programming", "Promises", "Event Loop", "Callbacks"]
 author: ["Garry Chen"]
 cover:
   image: images/shock wave.gif

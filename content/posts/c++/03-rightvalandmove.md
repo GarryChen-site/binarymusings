@@ -1,11 +1,14 @@
 ---
-title: "Right Value References and Move Semantics"
-description: "What exactly has been resolved"
-summary: Modern C++ Series - Part 03
+title: "C++ Move Semantics: Rvalue References Explained"
+
+description: "C++ move semantics and rvalue references - value categories, perfect forwarding, performance optimization, and modern C++ best practices."
+
+summary: "Understand rvalue references, value categories, perfect forwarding, and performance optimization techniques."
+
 date: 2025-06-19
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "Memory Management", "Move Semantics", "Right Value References"]
+tags: ["C++", "Move Semantics", "Rvalue References", "Performance", "Modern C++"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-03-00.jpg

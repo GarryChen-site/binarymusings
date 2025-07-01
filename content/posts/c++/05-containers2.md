@@ -1,11 +1,14 @@
 ---
-title: "Container Series II"
-description: "Containers that require function objects"
-summary: Modern C++ Series - Part 05
+title: "C++ Associative Containers: Maps, Sets & Hash Tables"
+
+description: "C++ associative containers - map, set, unordered_map, hash tables, function objects, and performance optimization with practical examples."
+
+summary: "Complete guide to C++ associative containers: map, set, unordered containers, hash tables, function objects, and performance tips."
+
 date: 2025-06-22
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "STL", "Associative Containers", "Function Objects", "Array"]
+tags: ["C++", "Associative Containers", "Hash Tables", "STL Maps", "Performance"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-05-00.jpg

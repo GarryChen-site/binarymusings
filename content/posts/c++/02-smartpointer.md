@@ -1,11 +1,14 @@
 ---
-title: "Do it Yourself"
-description: "Implementing a Smart Pointer"
-summary: Modern C++ Series - Part 02
+title: "C++ Smart Pointers: Build Your Own Implementation"
+
+description: "Learn to implement C++ smart pointers from scratch - templates, move semantics, reference counting, and RAII patterns. Complete guide with code."
+
+summary: "Build smart pointers from scratch in C++ - learn templates, move semantics, reference counting, and RAII patterns for memory management."
+
 date: 2025-06-13
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "Memory Management", "RAII", "Smart Pointer"]
+tags: ["C++", "Smart Pointers", "Templates", "Move Semantics", "RAII"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-02-00.jpg

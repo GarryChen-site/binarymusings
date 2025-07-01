@@ -1,11 +1,14 @@
 ---
-title: "Container Series"
-description: "A Few Simple Containers"
-summary: Modern C++ Series - Part 04
+title: "C++ STL Containers: Vector, List, Deque & More"
+
+description: "C++ STL containers - vector, list, deque, queue, stack. Memory layout, performance, when to use each container with practical examples."
+
+summary: "Complete guide to C++ STL containers: vector, list, deque, queue, stack with memory layouts, performance tips, and usage examples."
+
 date: 2025-06-20
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "STL", "Containers", "Vector", "List"]
+tags: ["C++", "STL Containers", "Vector", "Performance", "Data Structures"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-04-00.jpg
@@ -18,7 +21,6 @@ cover:
 
 There are already plenty of learning materials about containers. For reference, cppreference offers very comprehensive documentation. Today, we’ll take a more informal approach. Rather than repeating existing reference material, we’ll try to deepen your understanding of some key containers.
 
----
 
 # string
 

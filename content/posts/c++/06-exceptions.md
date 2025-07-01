@@ -1,11 +1,14 @@
 ---
-title: "Exceptions"
-description: "Use it or not, that's a question"
-summary: Modern C++ Series - Part 06
+title: "C++ Exception Handling: Safety & Best Practices"
+
+description: "C++ exception handling - exception safety, RAII patterns, noexcept specification, and when to use exceptions vs error codes."
+
+summary: "Complete guide to C++ exception handling: exception safety, RAII patterns, noexcept, and best practices for robust code."
+
 date: 2025-06-23
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "Exceptions", "Error Handling", "RAII", "noexcept"]
+tags: ["C++", "Exception Handling", "Exception Safety", "RAII", "noexcept"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-06-00.jpg

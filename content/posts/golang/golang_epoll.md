@@ -1,14 +1,14 @@
 ---
-title: "How Go Achieves High-Performance Network Programming with Epoll Under the Hood"
+title: "Go Network Programming: How Epoll Powers Performance"
 
-description: Deep dive into Go's net package implementation - how goroutines, epoll, and non-blocking I/O work together to deliver synchronous programming with asynchronous performance in network applications.
+description: "Deep dive into Go's net package - how goroutines and epoll deliver high-performance async I/O with simple synchronous code patterns."
 
-summary: Exploring how Go combines the simplicity of synchronous programming with the efficiency of epoll-based asynchronous I/O for high-performance network programming
+summary: "Exploring how Go combines the simplicity of synchronous programming with the efficiency of epoll-based asynchronous I/O for high-performance network programming."
 
 date: 2023-08-13
 series: ["Golang"]
 weight: 1
-tags: ["Golang", "Epoll", "Network Programming", "Concurrency", "Go Runtime", "Non-blocking I/O", "Goroutines", "Performance", "Linux Syscalls", "Go Internals"]
+tags: ["Golang", "Network Programming", "Epoll", "Goroutines", "Performance"]
 author: ["Garry Chen"]
 cover:
   image: images/go_epoll.webp

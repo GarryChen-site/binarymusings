@@ -1,15 +1,15 @@
 ---
-title: "Essential Go Programming Patterns: Slices, Interfaces, Performance Optimization"
+title: "Go Programming Patterns: Slices, Interfaces & Performance"
 
-description: "Complete guide to Go programming best practices - master slice memory management, interface patterns, time handling, and performance optimization techniques with practical examples and gotchas."
+description: "Go slice memory management, interface design patterns, and performance optimization. Learn best practices with examples and gotchas."
 
-summary: "Master essential Go programming patterns including slice memory management, interface design, time handling, and performance optimization techniques for better Go applications."
+summary: "Essential Go programming patterns including slice memory management, interface design, time handling, and performance optimization techniques for better Go applications."
 
 date: 2025-06-28
 
 series: ["Golang"]
 weight: 1
-tags: ["Golang", "Slice", "Interface", "Performance", "Memory Management", "Go Best Practices", "Reflection", "Time Handling", "Optimization", "Clean Code"]
+tags: ["Golang", "Programming Patterns", "Slice Management", "Interface Design", "Performance"]
 author: ["Garry Chen"]
 cover:
   image: images/go-01-00.jpg

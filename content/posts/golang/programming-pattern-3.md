@@ -1,14 +1,14 @@
 ---
-title: "Go Functional Options Pattern: Clean, Flexible API Design"
+title: "Go Functional Options Pattern: Clean API Design"
 
-description: "Master the Functional Options pattern in Go - learn how to design clean, flexible APIs that solve configuration problems. Compare with Builder pattern and configuration structs with practical examples."
+description: "Learn Go's Functional Options pattern for flexible API design. Compare with Builder pattern and config structs. Build clean, maintainable APIs."
 
 summary: "Learn the popular Functional Options pattern in Go for building clean, configurable APIs that are easy to use, maintain, and extend without complex constructors or configuration structs."
 
 date: 2025-06-30
 series: ["Golang"]
 weight: 1
-tags: ["Golang", "Functional Options", "Design Patterns", "API Design", "Configuration", "Builder Pattern", "Clean Code"]
+tags: ["Golang", "Functional Options", "API Design", "Design Patterns", "Configuration"]
 author: ["Garry Chen"]
 cover:
   image: images/go-03-00.jpg

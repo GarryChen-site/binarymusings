@@ -1,11 +1,14 @@
 ---
-title: "Iterators"
-description: "And a new and easy to use for loop"
-summary: Modern C++ Series - Part 07
+title: "C++ Iterators: Range-Based For & Custom Iterators"
+
+description: "C++ iterators - iterator categories, range-based for loops, custom iterator implementation with practical examples and best practices."
+
+summary: "Complete guide to C++ iterators: categories, range-based for loops, and building custom iterators with practical examples."
+
 date: 2025-06-24
 series: ["C++"]
 weight: 1
-tags: ["Modern C++", "Iterators", "Range-based for loop", "Input Iterator", "Output Iterator"]
+tags: ["C++", "Iterators", "Range-Based For", "STL", "Iterator Patterns"]
 author: ["Garry Chen"]
 cover:
   image: images/cpp-07-00.jpg
