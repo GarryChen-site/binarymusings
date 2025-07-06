@@ -1,5 +1,5 @@
 ---
-title: "Modern C++: Literals, Override & Function Control"
+title: "Modern C++ Features Guide: Literals, Override & Control"
 
 description: "Modern C++ features - user-defined literals, override/final specifiers, default/delete functions, and C++11/14 language improvements."
 

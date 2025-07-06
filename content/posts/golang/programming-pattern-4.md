@@ -1,5 +1,5 @@
 ---
-title: "Go Inversion of Control: Struct Embedding & Design"
+title: "Go Inversion of Control Guide: Struct Embedding & Design"
 
 description: "Learn Go's Inversion of Control with struct embedding, method override, and dependency inversion. Build reusable control logic patterns."
 

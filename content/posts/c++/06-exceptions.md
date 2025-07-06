@@ -1,5 +1,5 @@
 ---
-title: "C++ Exception Handling: Safety & Best Practices"
+title: "C++ Exception Handling Guide: Safety & Best Practices"
 
 description: "C++ exception handling - exception safety, RAII patterns, noexcept specification, and when to use exceptions vs error codes."
 

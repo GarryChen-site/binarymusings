@@ -1,5 +1,5 @@
 ---
-title: "C++ STL Containers: Vector, List, Deque & More"
+title: "C++ STL Containers Guide: Vector, List, Deque Performance"
 
 description: "C++ STL containers - vector, list, deque, queue, stack. Memory layout, performance, when to use each container with practical examples."
 

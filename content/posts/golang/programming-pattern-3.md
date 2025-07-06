@@ -1,5 +1,5 @@
 ---
-title: "Go Functional Options Pattern: Clean API Design"
+title: "Go Functional Options Pattern Guide: Clean API Design"
 
 description: "Learn Go's Functional Options pattern for flexible API design. Compare with Builder pattern and config structs. Build clean, maintainable APIs."
 

@@ -1,5 +1,5 @@
 ---
-title: "C++ Move Semantics: Rvalue References Explained"
+title: "C++ Move Semantics Guide: Rvalue References & Forwarding"
 
 description: "C++ move semantics and rvalue references - value categories, perfect forwarding, performance optimization, and modern C++ best practices."
 

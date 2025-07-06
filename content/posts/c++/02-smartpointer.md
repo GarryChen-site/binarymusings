@@ -1,5 +1,5 @@
 ---
-title: "C++ Smart Pointers: Build Your Own Implementation"
+title: "C++ Smart Pointers Tutorial: Build Custom Implementation"
 
 description: "Learn to implement C++ smart pointers from scratch - templates, move semantics, reference counting, and RAII patterns. Complete guide with code."
 

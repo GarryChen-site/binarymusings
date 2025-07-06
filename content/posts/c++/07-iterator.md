@@ -1,5 +1,5 @@
 ---
-title: "C++ Iterators: Range-Based For & Custom Iterators"
+title: "C++ Iterators Guide: Range-Based For & Custom Iterators"
 
 description: "C++ iterators - iterator categories, range-based for loops, custom iterator implementation with practical examples and best practices."
 

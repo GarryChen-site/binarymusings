@@ -1,5 +1,5 @@
 ---
-title: "Modern C++: Auto, Type Deduction & Initialization"
+title: "Modern C++ Features Guide: Auto, Type Deduction & More"
 
 description: "Modern C++ features - auto, decltype, type deduction, uniform initialization, and C++11/14/17 usability improvements with examples."
 

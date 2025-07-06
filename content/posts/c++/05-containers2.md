@@ -1,5 +1,5 @@
 ---
-title: "C++ Associative Containers: Maps, Sets & Hash Tables"
+title: "C++ Associative Containers Guide: Maps, Sets & Hash Tables"
 
 description: "C++ associative containers - map, set, unordered_map, hash tables, function objects, and performance optimization with practical examples."
 

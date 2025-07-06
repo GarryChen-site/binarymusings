@@ -1,5 +1,5 @@
 ---
-title: "C++ Memory Management: Heap, Stack & RAII Patterns"
+title: "C++ Memory Management Guide: Heap vs Stack & RAII Patterns"
 
 description: "C++ memory management with heap vs stack allocation, RAII patterns, smart pointers, and avoiding memory leaks. Essential modern C++ guide."
 
