@@ -107,22 +107,22 @@ params:
   homeInfoParams:
     Title: "Binary Musings"
     Content: >
-      👋 Welcome! Musings on technology, learning actively, and thinking independently in the age of AI.
+      Welcome! Musings on technology, learning actively, and thinking independently in the age of AI.
 
 
   socialIcons:
-    - name: github
-      title: View Source on Github
-      url: "https://github.com/GarryChen-site"
+    # - name: github
+    #   title: View Source on Github
+    #   url: "https://github.com/GarryChen-site"
     # - name: Discord
     #   title: Join discord community
     #   url: "https://discord.gg/ahpmTvhVmp"
     # - name: X
     #   title: Share PaperMod on X/Twitter
     #   url: "https://x.com/intent/tweet/?text=Checkout%20Hugo%20PaperMod%20%E2%9C%A8%0AA%20fast,%20clean,%20responsive%20Hugo%20theme.&url=https://github.com/adityatelange/hugo-PaperMod&hashtags=Hugo,PaperMod"
-    - name: KoFi
-      title: Buy me a Ko-Fi :)
-      url: "https://ko-fi.com/garrychen"
+    # - name: KoFi
+    #   title: Buy me a Ko-Fi :)
+    #   url: "https://ko-fi.com/garrychen"
 
   editPost:
     URL: "https://github.com/GarryChen-site/binarymusings"
