@@ -5,7 +5,7 @@ description: "Deep dive into Go's net package - how goroutines and epoll deliver
 
 summary: "Exploring how Go combines the simplicity of synchronous programming with the efficiency of epoll-based asynchronous I/O for high-performance network programming."
 
-date: 2023-08-13
+date: 2025-06-13
 series: ["Golang"]
 weight: 1
 tags: ["Golang", "Network Programming", "Epoll", "Goroutines", "Performance"]

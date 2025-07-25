@@ -5,7 +5,7 @@ description: "Deep dive into async programming fundamentals - hardware latency, 
 
 summary: "Comprehensive guide to JavaScript async programming - from hardware limitations and CPU latency to event loops, callback hell, and the evolution of Promises for better concurrency."
 
-date: 2021-11-13
+date: 2025-06-13
 series: ["JavaScript"]
 weight: 1
 tags: ["JavaScript", "Async Programming", "Promises", "Event Loop", "Callbacks"]
