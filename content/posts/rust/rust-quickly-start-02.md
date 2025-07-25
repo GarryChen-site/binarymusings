@@ -199,3 +199,5 @@ Interfaces isolate callers from implementers, greatly promoting code reuse and e
 Concurrency is the foundation of parallelism, allowing multiple tasks to be handled simultaneously. Parallelism is the manifestation of concurrency, processing multiple tasks at the same time. Synchronous execution blocks subsequent operations, while asynchronous execution allows them. Promises, widely used in asynchronous operations, represent results available at a future time. async/await wraps promises, often implemented using state machines.
 
 Generic programming uses parameterization to delay binding in data structures, enhancing generality. Type parameters can be constrained by interfaces to ensure certain behaviors. When using generic structures, our code also requires higher levels of abstraction.
+
+---
