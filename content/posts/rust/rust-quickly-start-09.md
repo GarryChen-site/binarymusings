@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-09-00.webp
   hiddenInList: true
-  caption: ""
+  caption: "Rust reference counting"
 
 ---
 
