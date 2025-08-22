@@ -10,7 +10,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["posts", "golang", "javascript", "c++"]
+mainsections: ["posts", "golang", "javascript", "c++", "rust"]
 
 minify:
   disableXML: true
@@ -63,8 +63,8 @@ sitemap:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  description: "Binary Musings - Programming tutorials, tech insights, and coding best practices. Learn C++, JavaScript, Go, and modern development techniques."
-  keywords: ["programming", "coding", "technology", "tutorials", "C++", "JavaScript", "Go", "software development", "tech blog"]
+  description: "Binary Musings - Programming tutorials, tech insights, and coding best practices. Learn C++, JavaScript, Go, Rust, and modern development techniques."
+  keywords: ["programming", "coding", "technology", "tutorials", "C++", "JavaScript", "Go", "Rust", "software development", "tech blog"]
   author: Garry Chen
   # author: ["Me", "You"] # multiple authors
   images: ["images/binary.png"] # Default social sharing image
