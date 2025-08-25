@@ -26,7 +26,7 @@ Let’s be clear right from the start: if you’re not sure whether you should u
 Now let’s dive into the topic of exceptions.
 
 
-# A World Without Exceptions
+## A World Without Exceptions
 
 First, let’s look at what a world without exceptions looks like. The most typical example is C. Suppose we’re performing some matrix operations and define the following matrix structure:
 
@@ -120,7 +120,7 @@ And this is just for a single level of function calls. If an error occurs far aw
 
 
 
-# Using Exceptions
+## Using Exceptions
 
 With exceptions, you can safely perform initialization directly inside the constructor. Let’s say our matrix class has the following members:
 
@@ -200,7 +200,7 @@ Let’s analyze where errors might occur:
 In short: as long as you organize your code properly and leverage RAII, your code can be shorter, cleaner, and safer. You can handle exceptions globally — often just for logging or user-facing error reporting.
 
 
-# Downsides of Exceptions
+## Downsides of Exceptions
 
 Of course, exceptions aren’t perfect. The two main criticisms are:
 
@@ -222,7 +222,7 @@ How to deal with exceptions responsibly:
 * **Mark functions as `noexcept` when they cannot throw.** This is especially important for move constructors, move assignment operators, and `swap()`. Destructors are automatically treated as `noexcept`.
 
 
-# Why Use Exceptions?
+## Why Use Exceptions?
 
 Even though later we’ll discuss other error-handling approaches (without exceptions or error codes), exceptions are deeply integrated into C++ as its standard error-handling mechanism. The standard library itself uses exceptions — not only for runtime errors but even for certain logic errors.
 
