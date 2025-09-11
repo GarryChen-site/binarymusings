@@ -18,7 +18,7 @@ cover:
 ---
 
 
-# Value Categories
+## Value Categories
 
 We often say that in C++, there are lvalues and rvalues. But that’s not entirely accurate. The C++ standard defines value categories more precisely:
 
@@ -115,7 +115,7 @@ In Python:
 * Everything is a reference type.
 
 
-# Lifetime and Expression Types
+## Lifetime and Expression Types
 
 The lifetime of a variable ends when it goes out of scope. If the variable represents an object, the object’s lifetime also ends at that point.
 But what about temporary objects (prvalues)? In C++, the rule is: a temporary object is destroyed after the full expression containing it has been evaluated, in the reverse order of their creation — unless *lifetime extension* occurs. Let’s first look at the basic case where no lifetime extension happens:
@@ -222,7 +222,7 @@ result&& r = std::move(process_shape(circle(), triangle()));
 Then we’re back to the previous output pattern. Even though `r` still exists when `something else` is printed, the object it points to has already been destroyed. Dereferencing `r` here leads to **undefined behavior**. Since `r` points to stack memory, it may not cause a crash immediately, but may lead to issues under certain circumstances.
 
 
-# The Meaning of Move Semantics
+## The Meaning of Move Semantics
 
 So far, we’ve discussed some syntax rules. Like learning grammar in a foreign language, these details can feel dry. They’re sometimes useful but often only make sense in hindsight. For beginners, it’s more important to understand **why** and to master the basics.
 
@@ -294,7 +294,7 @@ That’s why C++ needs **move semantics** as an optimization, while Java-like la
 All modern C++ standard containers are heavily optimized for move operations.
 
 
-# How to Implement Move Semantics?
+## How to Implement Move Semantics?
 
 To make your objects support move semantics, you usually need to do the following:
 
@@ -377,7 +377,7 @@ smart_ptr& operator=(smart_ptr rhs) noexcept {
 ```
 
 
-# Do Not Return References to Local Variables
+## Do Not Return References to Local Variables
 
 A common C++ mistake is to return a reference to a local object. Since local objects are destroyed when the function ends, returning a reference to them results in **undefined behavior**. Anything may happen.
 
@@ -449,7 +449,7 @@ Using `std::move` actually disables NRVO.
 
 
 
-# Reference Collapsing and Perfect Forwarding
+## Reference Collapsing and Perfect Forwarding
 
 Finally, let’s talk about something a bit more complex: **Reference Collapsing** (also called "Reference Folding").
 You will encounter this in generic programming, so it’s worth understanding since we’re discussing lvalue and rvalue references.

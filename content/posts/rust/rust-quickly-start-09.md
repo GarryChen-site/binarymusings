@@ -31,7 +31,7 @@ How Does Rust Handle Runtime Dynamic Checks?
 
 Rust uses reference-counted smart pointers, specifically **Rc (Reference Counter) and Arc (Atomic Reference Counter)**, to enable multiple ownership. Note that Arc here is not the same as ARC (Automatic Reference Counting) in Objective-C/Swift, though they solve similar problems using reference counting.
 
-# Rc
+## Rc
 
 Let’s first discuss Rc. For a data structure T, you can create a reference-counted smart pointer Rc that allows multiple ownership. When you create an Rc, the underlying data is stored on the heap. As we mentioned earlier, the heap is the only place where dynamically allocated memory can be shared safely.
 
@@ -79,7 +79,7 @@ As we can see, calling `clone()` does not copy the actual data. It simply increm
 You might wonder: How is the data stored on the heap, and why isn’t this heap memory controlled by the stack’s lifecycle?
 
 
-# Box::leak() Mechanism
+## Box::leak() Mechanism
 
 In the previous discussion, we noted that under Rust’s ownership model, the lifetime of heap memory is tied to the lifetime of the stack memory that created it. The implementation of Rc seems to contradict this principle. Indeed, if Rust strictly adhered to the single ownership model, it would not be able to support reference counting (Rc).
 
@@ -100,7 +100,7 @@ Having understood Rc, we can better grasp Rust’s dual approach to ownership ch
 * Static checks: Performed by the compiler to enforce ownership rules.
 * Dynamic checks: Using `Box::leak()` to create heap memory with unrestricted lifetimes, and reference counting to manage that memory’s lifecycle during runtime.
 
-# Implementing a DAG
+## Implementing a DAG
 
 With `Rc`, we can now implement a Directed Acyclic Graph (DAG), which would have been impossible under the strict single ownership model.
 
@@ -155,7 +155,7 @@ fn main() {
 }
 ```
 
-# RefCell
+## RefCell
 
 After creating the DAG, you might wonder: Can the DAG be modified after it’s built?
 
@@ -179,7 +179,7 @@ This is where `RefCell` comes in.
 
 Like `Rc`, `RefCell` bypasses Rust’s compile-time checks and allows mutable borrowing of otherwise immutable data at runtime. This introduces the concept of interior mutability.
 
-# Interior Mutability
+## Interior Mutability
 
 With interior mutability, it naturally leads to the concept of exterior mutability, so `let's first look at this simpler definition and learn by comparison. 
 
@@ -232,7 +232,7 @@ Let’s summarize it in the following table:
 ![exterior_mutability_vs_interior_mutability](images/rust-09-04.webp)
 
 
-# Implementing a Mutable DAG
+## Implementing a Mutable DAG
 
 Now that we have an intuitive understanding of `RefCell`, let’s see how to use it together with `Rc` to make the previously discussed DAG mutable.
 
@@ -291,7 +291,7 @@ fn main() {
 As you can see, by using the nested structure `Rc<RefCell<T>>`, our DAG can now be modified normally.
 
 
-# Arc and Mutex/RwLock
+## Arc and Mutex/RwLock
 
 We solved the DAG problem using `Rc` and `RefCell`, but can we also use `Rc` to handle the issue of multiple threads accessing the same memory, which was mentioned at the beginning?
 
@@ -307,7 +307,7 @@ These two data structures should be familiar to you. `Mutex` is a mutual exclusi
 
 Both `Mutex` and `RwLock` are used in multithreaded environments to protect access to shared data. If we want to use the DAG we constructed earlier in a multithreaded environment, we need to replace `Rc<RefCell<T>>` with either `Arc<Mutex<T>>` or `Arc<RwLock<T>>`.
 
-# Summary
+## Summary
 
 We have gained a deeper understanding of ownership and learned how to use data structures such as `Rc / Arc`, `RefCell / Mutex / RwLock`.
 

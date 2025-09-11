@@ -22,9 +22,9 @@ cover:
 
 We won’t talk about object-oriented design patterns here. Let’s take a look at an example in Go that uses the `embed` structure.
 
-# Embedding and Delegation
+## Embedding and Delegation
 
-## Struct Embedding
+### Struct Embedding
 In Go, we can easily embed one struct into another struct. As shown below:
 
 ```go
@@ -63,7 +63,7 @@ type ListBox struct {
 ```
 
 
-## Method Override
+### Method Override
 
 Then, we define two interfaces: `Painter` for drawing components and `Clicker` for click events:
 
@@ -113,7 +113,7 @@ func (listBox ListBox) Click() {
 Here, we need to especially emphasize that the `Button.Paint()` interface can be inherited from `Label` via embedding. If `Button.Paint()` is not implemented, it will call `Label.Paint()`. Therefore, defining `Paint()` inside `Button` is essentially an **override**.
 
 
-## Embedded Struct Polymorphism
+### Embedded Struct Polymorphism
 
 Through the following program, we can see how the whole polymorphism works:
 
@@ -140,7 +140,7 @@ We can see that we can use **interfaces** for polymorphism, and also use the **g
 
 
 
-# Inversion of Control
+## Inversion of Control
 
 Let’s look at another example. We have a data structure that stores integers, as shown below:
 
@@ -166,7 +166,7 @@ This implements three operations: `Add()`, `Delete()`, and `Contains()`. The fir
 
 
 
-## Implementing Undo Functionality
+### Implementing Undo Functionality
 
 Now we want to implement an **Undo** feature. We can wrap `IntSet` into an `UndoableIntSet`, as shown below:
 
@@ -223,7 +223,7 @@ In the above code, we can see:
 Using this approach to extend new functionality onto existing code is a good choice. It balances reusing original functionality with adding new capabilities. However, the biggest problem with this approach is that `Undo` functionality is actually **control logic**, not **business logic**. Therefore, reusing the `Undo` function is problematic—because it embeds a lot of `IntSet`-specific business logic.
 
 
-## Dependency Inversion
+### Dependency Inversion
 
 Now let’s look at another method:
 

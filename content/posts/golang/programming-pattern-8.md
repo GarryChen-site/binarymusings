@@ -19,7 +19,7 @@ cover:
 
 
 
-# Simple Example
+## Simple Example
 
 Let’s start with an example:
 
@@ -125,7 +125,7 @@ $ go run time.sum.go
 ```
 
 
-# HTTP Example
+## HTTP Example
 
 Let’s look at an example of handling HTTP requests.
 
@@ -239,7 +239,7 @@ func main() {
 ```
 
 
-# Pipeline of Multiple Decorators
+## Pipeline of Multiple Decorators
 
 When using multiple decorators, you end up nesting them layer by layer, which can look messy — especially when there are many decorators. So let’s refactor this.
 
@@ -267,7 +267,7 @@ http.HandleFunc("/v4/hello", Handler(hello,
 This code is much more readable — and the pipeline structure becomes clear.
 
 
-# Generic Decorators
+## Generic Decorators
 
 However, there's still a small problem with using the decorator pattern in Go — it's hard to make it *generic*. Just like the execution-time example above, the decorator's code is tightly coupled with the function signature of what it decorates, so it’s not truly reusable. If this can’t be resolved, the decorator pattern in Go becomes somewhat limited in practicality.
 

@@ -23,7 +23,7 @@ Before formally discussing how to deal with Go code flooded with `if err != nil`
 
 
 
-# C's error checking
+## C's error checking
 
 First, we know the most direct way to handle errors is through error codes. This is also the traditional way—the common approach in procedural languages. For example, in C, basically, functions indicate error or not via return values, and then use the global `errno` variable along with an `errstr` array to tell you *why* the error occurred.
 
@@ -73,7 +73,7 @@ Yet this complicates parameter semantics—some are inputs, some outputs—and i
 
 
 
-# Java's error handling
+## Java's error handling
 
 Java uses `try-catch-finally` exception handling, which is a big step up from C. Throwing and catching exceptions brings these benefits:
 
@@ -90,7 +90,7 @@ Java uses `try-catch-finally` exception handling, which is a big step up from C.
 
 
 
-# Go’s error handling
+## Go’s error handling
 
 Go supports multiple return values, so you can separate *business* results and *control* on errors. Many Go functions return `(result, err)`, therefore:
 
@@ -134,7 +134,7 @@ Go supports multiple return values, so you can separate *business* results and *
 
 In essence, Go’s error handling is return-value checking—but it incorporates many benefits of exceptions, like extensibility through types.
 
-# Resource Cleanup
+## Resource Cleanup
 
 After an error occurs, you need to clean up resources. Different programming languages use different patterns:
 
@@ -169,7 +169,7 @@ func main() {
 ```
 
 
-# Error Check Hell
+## Error Check Hell
 
 Yes, the notorious Go pattern `if err != nil` can overwhelm your code—but there are better ways. Observe this maddening example:
 
@@ -331,7 +331,7 @@ This "fluent interface" pattern can greatly clean error handling for repeated op
 
 
 
-# Wrapping Errors
+## Wrapping Errors
 
 Don’t just return `err`—wrap it to preserve context:
 
@@ -364,7 +364,7 @@ func (e *authorizationError) Unwrap() error {
 }
 ```
 
-## Modern Error Wrapping (Go 1.13+)
+### Modern Error Wrapping (Go 1.13+)
 
 **The recommended approach** is using built-in error wrapping:
 
@@ -376,7 +376,7 @@ if err != nil {
 
 The `%w` verb wraps the error, preserving the original error for unwrapping.
 
-## Modern Error Checking (Go 1.13+)
+### Modern Error Checking (Go 1.13+)
 
 Instead of type switching, use `errors.Is()` and `errors.As()`:
 
@@ -404,7 +404,7 @@ if errors.As(err, &authErr) {
 }
 ```
 
-## Sentinel Errors Pattern
+### Sentinel Errors Pattern
 
 Define package-level error variables for common errors:
 
@@ -439,7 +439,7 @@ if err != nil {
 }
 ```
 
-## Third-Party Libraries (Legacy)
+### Third-Party Libraries (Legacy)
 
 Before Go 1.13, the `github.com/pkg/errors` library was popular:
 

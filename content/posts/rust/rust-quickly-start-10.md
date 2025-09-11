@@ -28,7 +28,7 @@ Under this default behavior, the compiler can compare the lifetime of a value wi
 But have you ever wondered how the Rust compiler actually achieves this?
 
 
-# The lifetime of a value
+## The lifetime of a value
 
 Before we go deeper, let’s define the possible lifetimes a value can have.
 
@@ -53,7 +53,7 @@ Summary diagram:
 With these basics in mind, let’s see how the compiler recognizes lifetimes for values and references.
 
 
-# How the compiler determines lifetimes
+## How the compiler determines lifetimes
 
 Let’s start with two simple examples.
 
@@ -143,7 +143,7 @@ When `main()` calls `max()` function, s1 and s2 have the same lifetime `'a`, so 
 
 
 
-# Do Your References Need Extra Lifetime Annotations?
+## Do Your References Need Extra Lifetime Annotations?
 
 At this point, you might be wondering: *Why is it that in some of my previous code, many function parameters or return values used references, yet the compiler didn’t require me to explicitly annotate their lifetimes?*
 
@@ -199,7 +199,7 @@ fn max<'a, 'b>(s1: &'a str, s2: &'b str) -> &'??? str
 Only *we*, understanding the code logic, can correctly specify the constraints between parameters and return values so that it compiles.
 
 
-# Lifetime Annotation Exercise
+## Lifetime Annotation Exercise
 
 Let’s try implementing a string-splitting function `strtok()` to practice adding lifetime annotations.
 
@@ -301,7 +301,7 @@ Here, `Employee` contains string references for `name` and `title`. The lifetime
 When using such a struct, the struct’s own lifetime must not exceed the lifetime of any of its referenced fields.
 
 
-# Summary
+## Summary
 
 Today we introduced the concepts of static lifetime and dynamic lifetime, as well as how the compiler identifies the lifetimes of values and references.
 

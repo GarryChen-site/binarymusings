@@ -22,7 +22,7 @@ cover:
 There are already plenty of learning materials about containers. For reference, cppreference offers very comprehensive documentation. Today, we’ll take a more informal approach. Rather than repeating existing reference material, we’ll try to deepen your understanding of some key containers.
 
 
-# string
+## string
 
 Strictly speaking, `string` is not usually classified as a container in C++. But since it shares many similarities with containers, we’ll start with `string`.
 
@@ -80,7 +80,7 @@ cout << "Nice to meet you, " << name << "!\n";
 ```
 
 
-# vector
+## vector
 
 `vector` is probably the most widely used container. Though its name comes from mathematics, it’s more accurate to think of it as a dynamic array. It's roughly equivalent to Java's `ArrayList` or Python's `list`.
 
@@ -174,7 +174,7 @@ The main downside of `vector` is that resizing may require relocating many eleme
 Here’s the full English translation of your text:
 
 
-# deque
+## deque
 
 `deque` stands for **double-ended queue**. Its main purpose is to support:
 
@@ -198,7 +198,7 @@ Memory Layout:
 If you need a container that frequently inserts and removes elements from both ends, `deque` is a good choice.
 
 
-# list
+## list
 
 In C++, `list` represents a **doubly linked list**. Compared to `vector`, it’s optimized for inserting and deleting elements in the middle:
 
@@ -252,7 +252,7 @@ int main()
 ```
 
 
-# forward_list
+## forward_list
 
 Since `list` is a doubly linked list, is there a singly linked list in C++? The answer is yes: starting from C++11, `forward_list` became part of the standard library.
 
@@ -276,7 +276,7 @@ For now, it’s enough for you to simply know that `forward_list` exists. If you
 
 
 
-# queue
+## queue
 
 Before wrapping up, let’s briefly introduce two more container-like types. These are not full containers but rather **container adaptors** — they wrap existing containers.
 
@@ -314,7 +314,7 @@ int main()
 
 
 
-# stack
+## stack
 
 Similarly, `stack` is a **last-in, first-out (LIFO)** data structure.
 

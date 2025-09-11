@@ -21,7 +21,7 @@ In this article, we’ll discuss the **Functional Options** programming pattern.
 
 
 
-# Configuration Option Problem
+## Configuration Option Problem
 
 In programming, we often need to configure an object (or business entity). For example, here’s a sample business entity:
 
@@ -65,7 +65,7 @@ func NewTLSServerWithMaxConnAndTimeout(addr string, port int, maxconns int, time
 Since Go doesn’t support function overloading, each variant needs a different name.
 
 
-# Configuration Object Approach
+## Configuration Object Approach
 
 A common fix is using a config struct:
 
@@ -100,7 +100,7 @@ This works, but you still have `conf` being optional—so checks for `nil` or `C
 
 
 
-# Builder Pattern
+## Builder Pattern
 
 Java folks might default to a Builder pattern:
 
@@ -147,7 +147,7 @@ server := sb.Create("127.0.0.1", 8080).
 This is clear, but the builder struct wraps `Server`. You *could* use methods directly on `Server`, but then where to store interim state or errors? A builder wrapper keeps `Server` clean.
 
 
-# Functional Options
+## Functional Options
 
 Enter **Functional Options**, a functional style in Go.
 

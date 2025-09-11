@@ -22,7 +22,7 @@ When we assign variables, pass parameters, and return values from functions, if 
 
 Although single ownership solves the problem of arbitrary sharing of values that occurs in other languages, it also introduces some inconveniences. In the previous lesson, we mentioned: **what if you don't want to transfer the ownership of a value, but also can't use *Copy semantics* because the data structure doesn't implement the `Copy` trait?** In that case, you can *borrow* the data, which is the topic of this lesson: Borrow semantics.
 
-# Borrow Semantics
+## Borrow Semantics
 
 As the name implies, *Borrow semantics* allow a value’s ownership to be used in other contexts without being transferred. It's like staying at a hotel or renting an apartment—guests or tenants have temporary usage rights but no ownership. Additionally, borrow semantics are implemented through reference syntax (`&` or `&mut`).
 
@@ -36,7 +36,7 @@ Thus, **by default, Rust's borrow is read-only**, just like when staying in a ho
 
 So, if you want to avoid *Copy* or *Move*, you can use borrowing, or rather, references.
 
-# Read-only Borrowing/Referencing
+## Read-only Borrowing/Referencing
 
 Essentially, a reference is a controlled pointer to a specific type. When learning other languages, you’ll notice there are two ways to pass parameters: *pass-by-value* and *pass-by-reference*.
 
@@ -105,7 +105,7 @@ Even though many read-only references point to `data`, the data on the heap stil
 
 But now we encounter a new problem: what happens if `data` goes out of scope and is dropped while there are still references pointing to it? Wouldn't this lead to the very memory safety issue we are trying to avoid, such as using freed memory (use-after-free)? What should we do?
 
-# Borrow Lifetimes and Constraints
+## Borrow Lifetimes and Constraints
 
 Therefore, references to a value must also follow constraints, namely: the borrow cannot outlive the value’s lifetime.
 
@@ -172,7 +172,7 @@ So far, we've covered Rust's default behavior for read-only borrowing. Borrowers
 But as mentioned earlier, there are cases where we need *mutable borrowing*, where we want to modify the value during the borrowing period, similar to renting a house and making necessary modifications.
 
 
-# Mutable Borrowing / References
+## Mutable Borrowing / References
 
 Before introducing mutable borrowing, since a value can only have one owner at a time, the only way to modify the value is through its sole owner. However, allowing borrowing to change the value itself introduces new issues.
 
@@ -225,7 +225,7 @@ At first glance, the coexistence of a read-only reference and a mutable referenc
 
 However, upon closer inspection, you’ll find that there is a potential memory safety issue here. If we continue adding elements and the space reserved for data on the heap is insufficient, Rust will allocate a larger memory block, copy the existing values over, and then free the old memory. This would cause the `&data[0]` reference held by `data1` to become invalid, leading to a memory safety issue.
 
-# Rust’s Constraints
+## Rust’s Constraints
 
 While some automatic memory management systems like GC can avoid the second issue (coexisting mutable and read-only references), they cannot address the first issue (multiple mutable references).
 
@@ -241,7 +241,7 @@ From the constraints on mutable references, we can see that Rust not only solves
 
 Once we peel away the many layers of ownership rules, and dig deeper into the fundamental concepts, we uncover how values are stored in the heap or stack, and how values are accessed in memory. From these concepts, we can either extend their applications or limit their usage. This is how we find fundamental solutions to complex problems, which is the design philosophy behind Rust.
 
-# Summary
+## Summary
 
 Today, we learned about **Borrowing Semantics**, understanding the principles of read-only references and mutable references. Combined with the Move/Copy semantics from the previous lesson, Rust’s compiler ensures that the code does not violate a series of rules:
 

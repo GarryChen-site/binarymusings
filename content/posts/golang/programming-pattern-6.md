@@ -23,9 +23,9 @@ In this article, we’ll learn about three very important operations in function
 Let’s look at some examples first:
 
 
-# Basic Examples
+## Basic Examples
 
-## Map Example
+### Map Example
 
 In the code below, we’ve written two `Map` functions. Each function takes two parameters:
 
@@ -73,7 +73,7 @@ fmt.Printf("%v\n", y)
 You can see that when we passed a function to `MapStrToStr()` that converts strings to uppercase, the resulting array is all uppercase. When we passed a function to `MapStrToInt()` that calculates the length, the resulting array contained the lengths of the strings.
 
 
-## Reduce Example
+### Reduce Example
 
 ```go
 func Reduce(arr []string, fn func(s string) int) int {
@@ -94,7 +94,7 @@ fmt.Printf("%v\n", x)
 ```
 
 
-## Filter Example
+### Filter Example
 
 ```go
 func Filter(arr []int, fn func(n int) bool) []int {
@@ -126,7 +126,7 @@ The diagram below is a metaphor that vividly illustrates the semantics of Map-Re
 
 ![map-reduce](images/go-06-01.png)
 
-# Business Example
+## Business Example
 
 From the examples above, you might already understand that Map/Reduce/Filter are just **control logic**. The real **business logic** is defined by the data and the function you pass in. That’s right — this is a classic example of **separating business logic from control logic**, a well-known design principle.
 
@@ -134,7 +134,7 @@ Let’s now look at an example with real business meaning to reinforce what it m
 
 
 
-## Employee Information
+### Employee Information
 
 First, we define an `Employee` object and some sample data:
 
@@ -158,7 +158,7 @@ var list = []Employee{
 ```
 
 
-## Related Reduce/Filter Functions
+### Related Reduce/Filter Functions
 
 ```go
 func EmployeeCountIf(list []Employee, fn func(e *Employee) bool) int {
@@ -197,7 +197,7 @@ Quick explanation:
 
 
 
-## Custom Statistics Examples
+### Custom Statistics Examples
 
 1. **Count how many employees are over 40:**
 
@@ -251,7 +251,7 @@ younger_pay := EmployeeSumIf(list, func(e *Employee) int {
 ```
 
 
-# Generic Map-Reduce
+## Generic Map-Reduce
 
 As you can see, all the above Map-Reduce examples had to be written differently depending on the data types. Even though the code looks quite similar, the lack of type generality means we had to repeat ourselves. This naturally leads to the idea of **generic programming**.
 

@@ -23,7 +23,7 @@ This article focuses on how `kubectl` implements this pattern using a **function
 
 
 
-# A Simple Example
+## A Simple Example
 
 Let’s begin with a basic example of the Visitor design pattern.
 
@@ -101,7 +101,7 @@ In fact, the purpose of this code is to **decouple the data structures from the 
 
 
 
-# Kubernetes Background
+## Kubernetes Background
 
 Next, let’s go over some background knowledge:
 
@@ -114,9 +114,9 @@ Next, let’s go over some background knowledge:
 
 
 
-# kubectl Implementation
+## kubectl Implementation
 
-## Visitor Pattern Definition
+### Visitor Pattern Definition
 
 First, `kubectl` mainly processes a structure called `Info`. Here's the related definition:
 
@@ -146,7 +146,7 @@ We can see:
 
 Let’s Define Several Visitor Types
 
-## Name Visitor
+### Name Visitor
 
 This visitor accesses the `Name` and `Namespace` fields in the `Info` struct:
 
@@ -175,7 +175,7 @@ What we see here:
 
 
 
-## OtherThings Visitor
+### OtherThings Visitor
 
 This visitor accesses the `OtherThings` field:
 
@@ -198,7 +198,7 @@ func (v OtherThingsVisitor) Visit(fn VisitorFunc) error {
 ```
 
 
-## Log Visitor
+### Log Visitor
 
 ```go
 type LogVisitor struct {
@@ -216,7 +216,7 @@ func (v LogVisitor) Visit(fn VisitorFunc) error {
 ```
 
 
-## Code that Uses the Visitors
+### Code that Uses the Visitors
 
 Let’s look at how to use the above code:
 
@@ -266,7 +266,7 @@ Effects of the above code:
 
 
 
-## Visitor Decorator
+### Visitor Decorator
 
 Now let’s refactor the above using the decorator pattern:
 

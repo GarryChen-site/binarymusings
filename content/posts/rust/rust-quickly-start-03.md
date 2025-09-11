@@ -27,7 +27,7 @@ You can use any editor to write Rust code. Personally, I prefer VS Code because 
 - **even better toml**: Rust uses TOML for project configuration. This plugin provides syntax highlighting and error checking for TOML files.
 - **rust test lens**: Allows you to quickly run specific Rust tests.
 
-# Your First Practical Rust Program
+## Your First Practical Rust Program
 
 Now that you have the tools and environment ready, let's write a slightly useful Rust program. Even though we haven't introduced any Rust syntax yet, it won't stop us from writing a program. Running it will give you a basic understanding of Rust's features, key syntax, and ecosystem, which we'll analyze in detail later.
 
@@ -97,11 +97,11 @@ Although the example didn't show it, Rust also has the following characteristics
 
 Next, to quickly get started with Rust, let's go over the basics of Rust development.
 
-# Basic Syntax and Fundamental Data Types
+## Basic Syntax and Fundamental Data Types
 
 First, let's see how to define variables, functions, and data structures in Rust.
 
-## Variables and Functions
+### Variables and Functions
 
 As mentioned earlier, Rust supports type inference. When the compiler can infer the type, the variable type can generally be omitted, but constants (`const`) and static variables (`static`) must have their types declared.
 
@@ -152,7 +152,7 @@ fn main() {
 }
 ```
 
-## Data Structures
+### Data Structures
 
 Now that we know how to define functions, let's see how to define data structures in Rust.
 
@@ -226,7 +226,7 @@ A Simple Overview of Rust for Defining Variables, Functions, and Data Structures
 
 ![basic syntax](images/rust-03-02.webp)
 
-# Control Flow
+## Control Flow
 
 The basic control flows in a program are as follows, and we should already be familiar with them. Let's see how to use them in Rust.
 
@@ -314,7 +314,7 @@ Below is a summary of Rust's main control flow mechanisms.
 
 ![control flow](images/rust-03-03.webp)
 
-# Pattern Matching
+## Pattern Matching
 
 Rust's pattern matching is inspired by functional programming languages, making it powerful, elegant, and efficient. It can be used to match part or all of a `struct` or `enum`. For example, with the `Event` data structure defined earlier, you can match it as follows:
 
@@ -342,7 +342,7 @@ fn process_message(event: &Event) {
 
 Rust's pattern matching is a crucial language feature, widely used in state machine processing, message processing, and error handling.
 
-# Error Handling
+## Error Handling
 
 Rust does not follow the exception handling model used by predecessors like C++/Java. Instead, it borrows from Haskell, **encapsulating errors in the `Result<T, E>` type and providing the `?` operator to propagate errors conveniently**. The `Result<T, E>` type is a generic data structure where `T` represents the result type of successful execution, and `E` represents the error type.
 
@@ -389,7 +389,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-# Organizing Rust Projects
+## Organizing Rust Projects
 
 As the scale of Rust code grows, it becomes impractical to contain all code in a single file. Multiple files or directories may need to work together, and you can use `mod` to organize the code. 
 
@@ -425,7 +425,7 @@ A workspace can contain one or more crates, and only the modified crates need to
 
 ![creating a workspace](images/rust-03-05.webp)
 
-# Summary
+## Summary
 
 We’ve briefly reviewed the basic concepts of Rust. We covered defining variables with `let/let mut`, creating functions with `fn`, and defining complex data structures using `struct` and `enum`. We also learned about Rust's basic control flow, how pattern matching works, and how to handle errors.
 

@@ -31,7 +31,7 @@ Today, following the same line of thought as before, we’ll first organize and 
 
 At this point, you might feel a little impatient—“Why are we talking about memory again today?” The reason is that memory management is at the core of any programming language, as important as inner strength in martial arts. Only when we truly understand how data is created, stored, and destroyed in memory can we read code and analyze problems with confidence and ease.
 
-# Memory Management
+## Memory Management
 
 [Heaps and stacks]({{< ref "rust-quickly-start-01.md" >}}) are the main occasions for the use of memory in code.
 
@@ -55,7 +55,7 @@ With this foundation, let’s explore how Rust manages memory through the creati
 
 The goal is that, after today’s discussion, when you look at a Rust data structure, you’ll be able to picture its memory layout: which fields live on the stack, which live on the heap, and roughly how large it is.
 
-# Value Creation
+## Value Creation
 
 When we create a value for a data structure and assign it to a variable, depending on the value’s nature, it may be created on the stack or on the heap.
 
@@ -63,7 +63,7 @@ As a [quick]({{< ref "rust-quickly-start-01.md" >}}) [review]({{< ref "rust-quic
 
 If a data structure’s size cannot be determined, or if its size is known but it requires a longer lifetime, then it’s better placed on the heap. Let’s now examine the memory layouts of several key Rust data structures when created: struct, enum, Vec\<T\>, and String.
 
-## Struct
+### Struct
 When laying out data in memory, Rust **rearranges fields based on their alignment to achieve optimal memory size and access efficiency**. For example, a struct with fields A, B, and C might be laid out as A, C, B in memory.
 
 ![](images/rust-11-03.webp)
@@ -148,7 +148,7 @@ Although Rust defaults to optimizing struct layout, you can force C-style layout
 
 Now that we understand struct layouts in Rust (`tuples` behave similarly), let’s move on to enums. 
 
-## enum
+### enum
 
 We’ve already talked about enum before — in Rust it is a tagged union. Its size is the size of the tag plus the size of the largest variant.
 
@@ -253,7 +253,7 @@ If you’re curious about memory layouts of other types, check out [cheats.rs](h
 
 Now the value has been created, and we understand its memory layout. Next, let’s look at what happens during usage.
 
-# Value Usage
+## Value Usage
 
 When we talked about ownership, we learned that in Rust, if a value does not implement the `Copy` trait, it will be moved (Move) when assigned, passed as a parameter, or returned from a function.
 
@@ -274,7 +274,7 @@ During value usage, aside from Move, you also need to be aware of dynamic growth
 Take `Vec<T>` as an example: when the existing heap capacity is full and you continue adding elements, the vector automatically reallocates and grows. Sometimes, if elements are added and removed frequently, the collection keeps a lot of unused capacity, wasting memory. In such cases, you might want to call methods like `shrink_to_fit` to optimize memory usage.
 
 
-# Value Destruction
+## Value Destruction
 
 At this point, the value’s journey is more than halfway done—we’ve covered creation and usage, and now let’s talk about destruction.
 
@@ -293,7 +293,7 @@ Example:
 If a `student` struct contains fields like `name`, `age`, and `scores`, where `name` is a `String` and `scores` is a `HashMap`, both of these need their own drops. Since the `HashMap`’s keys are also `String`, those keys are dropped first. The full release order is: drop the `HashMap` keys, drop the `HashMap`’s heap table, then drop the struct’s stack memory.
 
 
-# Heap Memory Release
+## Heap Memory Release
 
 Because ownership ensures that each value has only one owner, heap memory release in Rust is simple: just call the `Drop` trait's `drop()` method. No extra concerns. This makes freeing values both safe and effortless—something unique to Rust.
 
@@ -303,7 +303,7 @@ In contrast, in other languages, values are flexible and references can bounce a
 
 In Rust, for most custom data structures, you don’t need to implement the `Drop` trait yourself—the compiler’s default behavior is enough. But if you want custom cleanup logic, you can implement `Drop` manually. Even if both your custom `drop()` and the system’s `drop()` target the same field, the compiler ensures it is only dropped once.
 
-# Releasing Other Resources
+## Releasing Other Resources
 
 While `Drop` is often used for heap memory, it can also release any resource: sockets, files, locks, etc. Rust provides RAII support for all resources.
 
@@ -334,7 +334,7 @@ You might think, “Isn’t it just skipping a `close()` call?” But in real-wo
 From `Drop`, we see again how solving problems from first principles leads to elegant solutions. Just a few simple ownership rules automatically solve the hard problem of safe resource release.
 
 
-# Summary
+## Summary
 
 We further explored Rust’s memory management. Building on ownership and lifetimes, we looked at the full journey of a value: creation, usage, and destruction. We studied memory layouts at creation, size and alignment; we saw how values are moved or dynamically grow during usage; and we learned how values are destroyed with Drop.
 

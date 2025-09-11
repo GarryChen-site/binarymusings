@@ -18,7 +18,7 @@ cover:
 ---
 
 
-# What is an Iterator?
+## What is an Iterator?
 
 An **iterator** is a very general concept — it’s not a specific type, but rather a set of requirements for a type. At its core, an iterator allows you to move from one position to another, step by step, until you reach the end. In Chinese, perhaps the term “traverse” would be more accurate than “iterate.” For example, you can traverse:
 
@@ -66,7 +66,7 @@ While iterators are usually objects, it’s important to note that **raw pointer
 
 
 
-# Common Iterators
+## Common Iterators
 
 The most commonly used iterators are the container’s `iterator` types. Taking the sequence containers we’ve studied as examples, they all define nested `iterator` and `const_iterator` types. Generally speaking, `iterator` allows writing, while `const_iterator` is read-only. These iterators are defined as input iterators or their derived types:
 
@@ -84,7 +84,7 @@ copy(v1.begin(), v1.end(), back_inserter(v2));
 ```
 
 
-# Using an Input Line Iterator
+## Using an Input Line Iterator
 
 Next, let’s look at an input iterator I wrote. Its function is simple: read the contents of an input stream (`istream`) line by line. Thanks to the range-based `for` loop syntax introduced in C++11, we can write traversal code for input streams in a very natural, non-procedural way, like this:
 
@@ -140,7 +140,7 @@ The generation of iterators may or may not involve calling `r`'s member function
 
 
 
-# Defining an Input Line Iterator
+## Defining an Input Line Iterator
 
 Now let’s look at what we need to do to implement this input line iterator.
 

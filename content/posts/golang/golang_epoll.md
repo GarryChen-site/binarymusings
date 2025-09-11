@@ -23,7 +23,7 @@ The rise of Golang brought coroutine-based programming to a new level. It combin
 
 Today, we're going to dive deep into the net package provided by Golang itself, to understand how it manages to deliver on its promises.
 
-# I. Golang net usage
+## I. Golang net usage
 
 Given that not everyone reading this may have experience with Golang, let's start with a simple example of a Golang service using the official net package. To keep things clear, I'll only be showing the core code.
 ``` go
@@ -60,7 +60,7 @@ If you were to write similar server code in other languages, such as C or Java, 
 
 Yet, in Golang, this kind of code performs impressively well. Why is that? Well, let's keep reading to find out.
 
-# II. The Underlying Process of Listen
+## II. The Underlying Process of Listen
 
 In more traditional languages like C or Java, the `listen` function is typically implemented as a direct call to the kernel's listen system call. If you're thinking that's what the Listen function does in Golang's net package, think again.
 
@@ -77,7 +77,7 @@ But don't just take my word for it-let's take a peek under the hood.
 
 The Listen function's entry point can be found in the `net/dial.go` file in Golang's source code. Let's delve deeper into the details.
 
-## 2.1 Entry Point for `Listen`
+### 2.1 Entry Point for `Listen`
 
 Unlike the detailed dissections often associated with source code reviews, our journey here requires an understanding of the broader picture rather than a line-by-line analysis.
 
@@ -113,7 +113,7 @@ func socket(ctx context.Context, net string, family, ...) (fd *netFD, err error)
 }
 	
 ```
-## 2.2 Creating the `socket`
+### 2.2 Creating the `socket`
 
 `sysSocket` differs from other languages by doing socket creation, binding, and listening all in one go:
 
@@ -170,7 +170,7 @@ func SetNonblock(fd int, nonblocking bool) (err error) {
 }
 ```
 
-## 2.3 Binding and Listening
+### 2.3 Binding and Listening
 Now, inside `listenStream`, we `bind` and `listen` using syscalls:
 
 ```go
@@ -205,7 +205,7 @@ var (
 )
 ```
 
-## 2.4 Creating and Initializing `epoll`
+### 2.4 Creating and Initializing `epoll`
 
 At the `fd.init` line of code. After several function call expansions, the creation of the `epoll` object is executed. This step also adds the `socket` handle-which is currently in a listening state-to the `epoll` object for network event management.
 
@@ -268,7 +268,7 @@ func netpollopen(fd uintptr, pd *pollDesc) uintptr {
 }
 ```
 
-# III. Accept Process
+## III. Accept Process
 
 After the server completes the Listen operation, it calls Accept. This function mainly does three things:
 
@@ -326,7 +326,7 @@ func (fd *netFD) accept() (netfd *netFD, err error) {
 
 Next up, let's dissect each of these steps in detail.
 
-## 3.1 Accepting a Connection
+### 3.1 Accepting a Connection
 
 Through step-by-step debugging, we find that `Accept` goes into the `Accept` method of the `FD` object. Here, it calls the OS-level accept system call:
 
@@ -364,7 +364,7 @@ func (fd *FD) Accept() (int, syscall.Sockaddr, string, error) {
 The internal `accept` method triggers the Linux kernel’s `accept` system call (not expanded here). The goal is to get an incoming connection from the client. If received, it returns it.
 
 
-## 3.2 Blocking the Current Goroutine
+### 3.2 Blocking the Current Goroutine
 
 Now let's consider the situation where `accept` is called but no client connections have yet arrived.
 
@@ -419,7 +419,7 @@ func netpollblock(pd *pollDesc, mode int32, waitio bool) bool {
 
 The `gopark` function is the internal Go runtime’s way to block a goroutine.
 
-## 3.3 Adding the New Connection to epoll
+### 3.3 Adding the New Connection to epoll
   
 Now let’s consider when a client connection has already arrived. In this case, `fd.pfd.Accept` returns the new connection, and Go adds this connection to epoll for efficient event management:
 
@@ -481,11 +481,11 @@ func netpollopen(fd uintptr, pd *pollDesc) uintptr {
 
 
 
-# IV. Internal Process of Read and Write
+## IV. Internal Process of Read and Write
 
 After a connection has been successfully accepted, the remaining task is to perform read and write operations on the connection.
 
-## 4.1 Internal Process of Read
+### 4.1 Internal Process of Read
 
 Let’s look at the detailed code:
 
@@ -520,7 +520,7 @@ func (fd *FD) Read(p []byte) (int, error) {
 ```
 The `waitRead` function blocks the current goroutine, just like we explained earlier in Section 3.2, so we won’t go into details again here.
 
-## 4.2 Internal Process of Write
+### 4.2 Internal Process of Write
 
 The overall process of Write is similar to that of Read. It first calls the write system call to send data. If the kernel's send buffer is full, the goroutine blocks itself and waits until it becomes writable again.
 
@@ -573,7 +573,7 @@ func (pd *pollDesc) wait(mode int, isFile bool) error {
 }
 ```
 
-# V. Goroutine Wake-up in Golang
+## V. Goroutine Wake-up in Golang
 
 In many of the previous steps we discussed, goroutine blocking is involved. For example, when using `Accept`, if no new connection has arrived yet, or during `Read` operations when the other side hasn’t sent any data—Golang will not let the goroutine hold onto the CPU. Instead, it blocks the goroutine.
 
@@ -679,7 +679,7 @@ func netpollready(toRun *gList, pd *pollDesc, mode int32) {
 }
 ```
 
-# VI. In Conclusion
+## VI. In Conclusion
 
 The advantage of synchronous programming is that it aligns with how people think in a straight, linear way. Code written in this style is easy to write and easy to understand. However, the downside is very poor performance, mainly because it leads to frequent thread context switches.
 

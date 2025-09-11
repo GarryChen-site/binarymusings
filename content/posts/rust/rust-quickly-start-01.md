@@ -19,7 +19,7 @@ cover:
 
 The most basic concept in code is variables and values, and the place where they are stored is memory, so we start with memory.
 
-# Memory
+## Memory
 
 Our programs constantly interact with memory. Even in a simple statement like assigning “hello world!” to s, there are deep interactions with the Read-Only Data segment (RODATA), the heap, and the stack:
 
@@ -54,7 +54,7 @@ Many developers using languages with automatic memory management, like Java or P
 
 While these are generally correct, they don’t get to the heart of the matter. If you only memorize rules and formulas in your work, you may get confused when encountering special cases. However, if you understand the logic behind these formulas, you can quickly find the answer through simple reasoning, even if you forget them. So, let’s delve into the design principles of the heap and the stack and see how they actually work.
 
-# Stack
+## Stack
 
 The stack is the foundation of a program’s execution. Whenever a function is called, a contiguous block of memory is allocated at the top of the stack, known as a frame.
 
@@ -83,7 +83,7 @@ The size of the string’s data structure is indeterminate at compile time, and 
 
 Thus, we cannot place the string itself on the stack. We must first place it on the heap, then allocate a corresponding pointer on the stack to reference the memory on the heap.
 
-# Problems with Stack Allocation
+## Problems with Stack Allocation
 
 From the diagram, you can also see that memory allocation on the stack is very efficient. By simply adjusting the stack pointer, the necessary space can be reserved; moving the stack pointer back releases the reserved space. Reserving and releasing memory only involves modifying registers without additional calculations or system calls, which makes it very efficient.
 
@@ -95,7 +95,7 @@ This is mainly to avoid stack overflow by considering the size of the call stack
 
 Over-allocating memory on the stack is one cause of stack overflow. Another more widely known cause is improperly terminated recursive functions. A recursive function continuously calls itself, and each call forms a new frame. If the recursive function does not terminate, it will eventually lead to stack overflow.
 
-# Heap
+## Heap
 While using the stack is very efficient, its limitations are also obvious. When we need dynamically sized memory, we can only use the heap. For example, variable-length arrays, lists, hash tables, and dictionaries are all allocated on the heap.
 
 When allocating memory on the heap, it is generally a best practice to reserve some space.
@@ -120,7 +120,7 @@ On the other hand, each block of heap memory needs to be explicitly released, gi
 
 ![heap](/images/rust-01-03.webp)
 
-# Problems with Heap Allocation
+## Problems with Heap Allocation
 
 However, the flexibility of heap memory also brings many challenges to memory management.
 
@@ -132,7 +132,7 @@ If heap memory is freed, but the corresponding pointer on the stack pointing to 
 
 ![heap problems](/images/rust-01-04.webp)
 
-# How GC and ARC Solve the Problem
+## How GC and ARC Solve the Problem
 
 To avoid the issues caused by manual heap memory management, a series of programming languages led by Java adopt a method of tracing garbage collection (Tracing GC) to automatically manage heap memory. This method periodically marks objects that are no longer referenced and then sweeps them away to manage memory automatically, reducing the burden on developers.
 
@@ -148,7 +148,7 @@ When using Android phones, occasional lag is often due to this issue, whereas iO
 
 A side note: the GC performance discussed above differs from the general perception of performance. The common notion of performance encompasses both throughput and latency, which can be different from actual performance metrics. GC and ARC are typical examples. Although GC has higher efficiency and throughput for memory allocation and release compared to ARC, the occasional high latency gives the impression that GC is less performant than ARC.
 
-# Summary
+## Summary
 
 Today, we revisited fundamental concepts and analyzed the characteristics of the stack and the heap.
 

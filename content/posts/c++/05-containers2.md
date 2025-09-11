@@ -19,7 +19,7 @@ cover:
 
 
 
-# Function Objects and Their Specializations
+## Function Objects and Their Specializations
 
 Before discussing containers, we need to first introduce two important function objects: `less` and `hash`.
 
@@ -110,7 +110,7 @@ In this example, notice that the actual *value* of the function object (`less`, 
 The same principle applies to containers: the function object type controls container behavior.
 
 
-# priority_queue
+## priority_queue
 
 `priority_queue` is also a container adapter. We didn’t cover it earlier with the other adapters because it uses a comparison function object (default is `less`).
 
@@ -156,7 +156,7 @@ Output:
 ```
 
 
-# Associative Containers
+## Associative Containers
 
 Associative containers include `set`, `map`, `multiset`, and `multimap`. Outside of C++, `map` is often called a *dictionary* or *associative array*, and in JSON it's simply called an *object*. In other languages, these containers are often unordered; in C++, associative containers are ordered by default.
 
@@ -278,7 +278,7 @@ Usually, types naturally satisfy these conditions. But:
 * Comparison-based lookup, insertion, and deletion have logarithmic complexity `O(log(n))`. Is there a faster alternative?
 
 
-# Unordered Associative Containers
+## Unordered Associative Containers
 
 Starting from C++11, each associative container has a corresponding unordered version:
 
@@ -336,7 +336,7 @@ However, this depends on the quality of the hash function. If the hash function 
 
 
 
-# array
+## array
 
 The last container we’ll cover is `array`, which serves as a modern replacement for C-style arrays. C arrays still exist in C++ mainly for backward compatibility, but they differ greatly from C++ containers:
 

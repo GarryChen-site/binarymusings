@@ -20,7 +20,7 @@ cover:
 
 In this article, we focus on the Pipeline pattern in Go programming. Those familiar with Unix/Linux command-line will not find pipelines strange—they’re a way to chain commands to build more powerful functionality. Today, stream processing, functional programming, and simple API orchestration in API gateways for microservices are all influenced by the pipeline approach. Pipeline technique makes it easy to break code into multiple small modules with single responsibility and high cohesion/low coupling, then stitch them to achieve complex functionality.
 
-# HTTP handling
+## HTTP handling
 
 We already saw a pipeline example in \[Go programming patterns: Decorators], and we'll revisit it here. In that article, we had small handler functions like `WithServerHeader()`, `WithBasicAuth()`, `WithDebugLog()`. When implementing HTTP APIs, we could compose them simply:
 
@@ -51,13 +51,13 @@ http.HandleFunc("/v4/hello", Handler(hello,
                 WithServerHeader, WithBasicAuth, WithDebugLog))
 ```
 
-# Channel-based pipelines
+## Channel-based pipelines
 
 Writing a generic pipeline framework in Go isn't easy, but don't forget Go’s standout features: goroutines and channels. We can use them to build pipelines. 
 
 Rob Pike introduced this pattern in “[Go Concurrency Patterns: Pipelines and cancellation](https://go.dev/blog/pipelines).”
 
-## Channel forwarding functions
+### Channel forwarding functions
 
 First, an `echo()` function sends integers into a channel:
 
@@ -76,7 +76,7 @@ func echo(nums []int) <-chan int {
 
 Then, typical pipeline stages:
 
-## Square function
+### Square function
 
 ```go
 func sq(in <-chan int) <-chan int {
@@ -91,7 +91,7 @@ func sq(in <-chan int) <-chan int {
 }
 ```
 
-## Filter odds
+### Filter odds
 
 ```go
 func odd(in <-chan int) <-chan int {
@@ -108,7 +108,7 @@ func odd(in <-chan int) <-chan int {
 }
 ```
 
-## Sum function
+### Sum function
 
 ```go
 func sum(in <-chan int) <-chan int {
@@ -159,7 +159,7 @@ for n := range pipeline(nums, echo, odd, sq, sum) {
 }
 ```
 
-# Fan‑in / Fan‑out
+## Fan‑in / Fan‑out
 
 Go’s goroutines and channels also support one‑to‑many and many‑to‑one pipelines. Here’s a fan‑in example:
 

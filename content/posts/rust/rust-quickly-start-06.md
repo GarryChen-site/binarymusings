@@ -22,7 +22,7 @@ Through the examples of HTTPie and Thumbor, you should have gained a clearer und
 
 Some people want to see what code with extensive lifetime annotations looks like in practice; some are curious about Rust's macros; some are interested in Rust's interoperability with other languages; and some want to know what it's like to use Rust for client-side development. So today, we'll cover all these aspects with a hardcore example.
 
-# SQL
+## SQL
 
 In our work, we often deal with various data sources such as databases, Parquet, CSV, and JSON. The process typically involves fetching, filtering, projecting, and sorting data.
 
@@ -47,7 +47,7 @@ So, how about we design a library that allows SQL queries on any data source and
 
 Guess how many lines of code this library will take? Today's challenge is quite difficult, so let's set a benchmark of 500 lines of code.
 
-# Design Analysis
+## Design Analysis
 
 First, we need a SQL parser. Writing a parser in Rust isn't difficult. We can use [`serde`](https://github.com/serde-rs/serde), any [parser combinator](https://en.wikipedia.org/wiki/Parser_combinator), or a [PEG parser](https://en.wikipedia.org/wiki/Parsing_expression_grammar) like [`nom`](https://github.com/rust-bakery/nom) or [`pest`](https://github.com/pest-parser/pest). However, SQL parsing is common enough that the Rust community already has a solution: [`sqlparser-rs`](https://github.com/sqlparser-rs/sqlparser-rs).
 
@@ -81,7 +81,7 @@ Of course, the conversion process is quite tedious. Without good pattern matchin
 
 Fortunately, Rust has excellent pattern matching support. While not as powerful as Erlang/Elixir, it surpasses most programming languages. You'll feel this firsthand when you start coding.
 
-# Creating a SQL Dialect
+## Creating a SQL Dialect
 
 With our analysis complete, let's proceed step-by-step with the coding.
 
@@ -221,7 +221,7 @@ Cool! You see, with about 10 lines of code (from line 7 to line 19), by adding c
 
 Why is this so powerful? Because with traits, you can easily achieve [Inversion of Control (IoC)](https://en.wikipedia.org/wiki/Inversion_of_control). In Rust development, this is a very common practice.
 
-# Implementing AST Conversion
+## Implementing AST Conversion
 
 We have completed SQL parsing, and now it's time to use Polars for AST conversion. 
 
@@ -386,7 +386,7 @@ This means we need to encapsulate those unimportant details in a separate place,
 
 Such code is easy to read, easy to test, simple to maintain, and a pleasure to work with. Rust's standard library's `From`/`TryFrom` trait is designed for this purpose and is well worth using.
 
-# Fetching Data from the Source
+## Fetching Data from the Source
 
 Having completed the AST conversion, the next step is to fetch data from the source.
 
@@ -464,7 +464,7 @@ It seems that this approach yields more code, but it separates `retrieve_data` f
 
 Now we have completed the SQL parsing, implemented the AST conversion from SQL to DataFrame, and fetched data from the source. The challenge is more than halfway done, leaving only the main process logic.
 
-# Main Process
+## Main Process
 
 When we create a library, we typically don't expose the internal data structures directly; instead, we wrap them in our own data structures.
 
@@ -702,7 +702,7 @@ With such a small amount of code, we’ve done a lot of decoupling work: the arc
 Potentially changing Fetchers and Loaders can be easily extended in the future. For instance, the `select * from ps` example mentioned initially can be handled with a `StdoutFetcher` and `TsvLoader`.
 
 
-# Support for Other Languages
+## Support for Other Languages
 
 Now that we have completed the core code, don't you feel a sense of accomplishment? The queryer tool we implemented can be used as a library in Rust, available for other Rust programs, which is wonderful.
 
@@ -729,7 +729,7 @@ members = [
 ]
 ```
 
-# Python
+## Python
 
 In the root directory of the workspace, create a new crate with `cargo new queryer-py --lib`. In the `queryer-py` directory, edit `Cargo.toml`:
 
@@ -825,7 +825,7 @@ Cool! With just 20 lines of code, we made our module callable by Python, and err
 
 For many companies, it is very costly to fully migrate their existing codebase to Rust, but by integrating Rust with various languages, they can migrate parts of the code that require high performance to Rust, enjoy the benefits, and gradually promote it. This way, Rust can be applied more effectively.
 
-# Summary
+## Summary
 
 Looking back on our Rust coding journey this week, we first created an HTTPie, a simple flow with a bronze-level difficulty that you can write after learning ownership and understanding basic traits.
 

@@ -19,7 +19,7 @@ cover:
 
 In the previous lesson, we learned the basics of Rust syntax. Now, let's put that knowledge into practice by writing a small CLI tool. You might encounter some unfamiliar syntax, but don't worry about understanding everything right away. Treat it like copying for now.
 
-# HTTPie
+## HTTPie
 
 We'll create a CLI tool to help us handle various tasks. Let's take [HTTPie](https://httpie.io/) as an example and see how to create a similar CLI tool using Rust. HTTPie is a Python-based, user-friendly command-line tool similar to cURL. It helps us diagnose HTTP services more effectively.
 
@@ -29,7 +29,7 @@ The image below shows a POST request sent using HTTPie. Compared to cURL, HTTPie
 
 Think about how you would implement HTTPie using your favorite language. What libraries would you use? How many lines of code would it take? Now, think about how you would do it in Rust. With these thoughts in mind, let's start building this tool with Rust! Our goal is to achieve this in about **200 lines of code**.
 
-# Feature Analysis
+## Feature Analysis
 
 To create a tool like HTTPie, we need to outline the main features to implement:
 
@@ -48,7 +48,7 @@ Let's look at the libraries needed to implement these features:
 - For formatted output, to make the output as readable as HTTPie's Python version, we'll use the `colored` library for colorful terminal output.
 - Additionally, we'll need a few more libraries: `anyhow` for error handling, `jsonxf` for formatting JSON responses, `mime` for handling MIME types, and `tokio` for asynchronous processing.
 
-# CLI Handling
+## CLI Handling
 
 With a basic idea in mind, let's create a project named `httpie`:
 
@@ -128,7 +128,7 @@ Opts { subcmd: Post(Post { url: "httpbin.org/post", body: ["a=1", "b=2"] }) }
 
 By default, the binary compiled by `cargo build` is located in the project's `target/debug` directory. As we can see, the command-line parsing works, achieving the desired functionality.
 
-# Adding Validation
+## Adding Validation
 
 Currently, we haven't added any input validation. For example, the following input results in an incorrectly parsed URL:
 
@@ -227,7 +227,7 @@ This approach aligns well with the [Open-Closed Principle](https://en.wikipedia.
 
 You might not fully understand all the details of this code right now, but don't worry. Keep writing, and for today, just focus on getting the code to run without worrying about grasping every concept.
 
-# HTTP Request
+## HTTP Request
 
 Next, let's continue with the core functionality of HTTPie: handling HTTP requests. We'll add the subcommand processing workflow in the `main()` function.
 

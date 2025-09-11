@@ -24,7 +24,7 @@ Again, if you don't fully understand the code, don't worry. Just follow along li
 
 Today's example is a common requirement we encounter in our work: building a web server to provide certain services. Similar to the previous lesson with HTTPie, we'll reimplement an existing open-source tool in Rust. Today, we'll tackle a slightly larger project: building an image server similar to [Thumbor](https://github.com/thumbor/thumbor).
 
-# Thumbor
+## Thumbor
 
 Thumbor is a well-known image server in the Python ecosystem, widely used in scenarios requiring dynamic image resizing.
 
@@ -40,7 +40,7 @@ Today, we'll implement **the core functionality: dynamic image transformation**.
 
 With your thoughts in mind, let's start building this tool in Rust! Our goal is to meet our requirements with about 200 lines of code.
 
-# Design Analysis
+## Design Analysis
 
 Since this is an image transformation, we must support various transformation functions like resizing, cropping, watermarking, and even applying filters. However, the challenge in an image transformation service lies in the interface design—creating a simple, easy-to-use interface that allows for future extensions.
 
@@ -133,7 +133,7 @@ An obvious optimization is to **provide an LRU (Least Recently Used) cache for t
 After this analysis, doesn't Thumbor seem not so complex? But you might still wonder: can we really complete all this work in 200 lines of code? Let's start writing and count the lines after we finish.
 
 
-# Protobuf Definition and Compilation
+## Protobuf Definition and Compilation
 
 Let's start by creating a new project with `cargo new thumbor`, then add the following dependencies to the `Cargo.toml` file:
 
@@ -381,7 +381,7 @@ mod tests {
 }
 ```
 
-# Introducing the HTTP Server
+## Introducing the HTTP Server
 
 Having handled protobuf-related content, let's move on to the HTTP service flow. The Rust community has many high-performance web servers, such as [actix-web](https://github.com/actix/actix-web), [rocket](https://github.com/rwf2/Rocket), [warp](https://github.com/seanmonstar/warp), and [axum](https://github.com/tokio-rs/axum).
 
@@ -489,7 +489,7 @@ Wow, our web server interface can already process requests correctly.
 
 Don't worry if some of the syntax looks confusing. We haven't covered ownership, type systems, generics, and other details yet, so it's normal not to understand everything. Just follow my thought process and understand the overall flow.
 
-# Fetching and Caching the Source Image
+## Fetching and Caching the Source Image
 
 Next, we'll handle the logic to fetch the source image.
 
@@ -625,7 +625,7 @@ Sep 08 15:47:40.752  INFO thumbor: Listening on 127.0.0.1:3000
 
 To facilitate testing, I added a helper function to generate a test URL. Opening this URL in a browser should return an image identical to the source image, indicating that the network handling part is done.
 
-# Image Processing
+## Image Processing
 
 Next, we can process the image. Rust has a good low-level `image` library, with many higher-level libraries built around it, including `photon_rs`, which we will use today.
 
@@ -896,7 +896,7 @@ Furthermore, **by reasonably using protobuf to define interfaces and traits for 
 
 As a system-level language, Rust uses a unique memory management scheme to manage memory at zero cost. As a high-level language, Rust provides a powerful type system and a comprehensive standard library, helping us write low-coupling, high-cohesion code with ease.
 
-# Summary
+## Summary
 
 Today's discussion on Thumbor is an order of magnitude more challenging than the previous one on HTTPie (the complete code is in the [GitHub repo](https://github.com/GarryChen-site/medium-repo/tree/main/Rust/thumbor)). It's okay if you don't understand every detail, but I believe you'll be further impressed by Rust's expressive power, abstraction capability, and practical problem-solving abilities.
 

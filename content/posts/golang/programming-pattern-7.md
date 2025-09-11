@@ -17,7 +17,7 @@ cover:
 
 ---
 
-# First Look
+## First Look
 
 Let’s start with a simple example:
 
@@ -73,9 +73,9 @@ From these two examples, Go’s generics are basically ready to use, though ther
 Still, this is a great step forward. Let’s see what we can do with it.
 
 
-# Data Structures
+## Data Structures
 
-## Stack
+### Stack
 
 One major benefit of generics is creating type-independent data structures. Here’s how we implement a generic stack using a slice.
 
@@ -145,7 +145,7 @@ func main() {
 ```
 
 
-## Doubly Linked List
+### Doubly Linked List
 
 Here’s a generic implementation of a doubly linked list with methods:
 
@@ -240,9 +240,9 @@ func main(){
 ```
 
 
-# Functional Generics
+## Functional Generics
 
-## Generic Map
+### Generic Map
 
 ```go
 func gMap[T1 any, T2 any](arr []T1, f func(T1) T2) []T2 {
@@ -283,7 +283,7 @@ print(upstrs) // ["HELLO" "WORLD" "GOLANG" "GENERICS"]
 
 
 
-## Generic Reduce
+### Generic Reduce
 
 ```go
 func gReduce[T1 any, T2 any](arr []T1, init T2, f func(T2, T1) T2) T2 {
@@ -312,7 +312,7 @@ fmt.Printf("Sum = %d\n", sum)
 ```
 
 
-## Generic Filter
+### Generic Filter
 
 The filter function is mainly used for filtering, to filter out some data that meets certain conditions (filter in) or does not meet the conditions (filter out). Below is a related code example.
 
@@ -350,7 +350,7 @@ print(odds)
 ```
 
 
-# Business Example
+## Business Example
 
 Define an employee struct and data:
 

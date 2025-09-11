@@ -26,11 +26,11 @@ In previous lessons, we've already touched on some of the features introduced in
 
 
 
-# Automatic Type Deduction
+## Automatic Type Deduction
 
 If we were to pick the most significant change introduced in C++11, automatic type deduction would definitely rank in the top three. And if we're only considering improvements in usability or expressiveness, then it absolutely deserves the top spot.
 
-## auto
+### auto
 
 Automatic type deduction means that the compiler can infer a variable's type from the type of the expression assigned to it (and, starting from C++14, also deduce the return type of functions), so the programmer no longer needs to explicitly declare the type.
 It’s important to note that `auto` **does not change the fact that C++ is a statically typed language**—the type of a variable declared with `auto` is still determined at compile time; the compiler just fills it in for you.
@@ -107,7 +107,7 @@ This example shows how `auto` not only reduces verbosity but also improves abstr
 * `auto&& a = expr;` → matches `template <typename T> f(T&&)`, and based on reference collapsing rules, the result is a reference that matches the value category of `expr`.
 
 
-## decltype
+### decltype
 
 `decltype` lets you obtain the type of an expression and use it as a type. It has two main use cases:
 
@@ -124,7 +124,7 @@ decltype(a + a)   // int (because 'a + a' is a prvalue)
 ```
 
 
-## **`decltype(auto)`**
+### **`decltype(auto)`**
 
 Usually, using `auto` makes code easier to write. However, there's a limitation—you need to know whether the result should be a value or a reference **at the time you write `auto`**.
 
@@ -152,7 +152,7 @@ This is especially helpful in writing **generic forwarding function templates**,
 
 
 
-# Function Return Type Deduction
+## Function Return Type Deduction
 
 Starting from C++14, function return types can also be declared using `auto` or `decltype(auto)`. As before, using `auto` yields a value type, while `auto&` or `auto&&` yields a reference type. Using `decltype(auto)` allows the return type to be deduced from the return expression—whether it's a value or a reference.
 
@@ -169,7 +169,7 @@ This is typically used when the return type is complex or depends on the types o
 
 
 
-# Class Template Argument Deduction**
+## Class Template Argument Deduction**
 
 If you've used `std::pair`, you probably don’t write it like this:
 
@@ -239,7 +239,7 @@ MyObj obj{"hello"};
 ```
 
 
-# Structured Binding
+## Structured Binding
 
 When discussing associative containers, we saw an example like this:
 
@@ -258,7 +258,7 @@ This allows us to declare variables with `auto` to directly unpack the individua
 
 
 
-# List Initialization
+## List Initialization
 
 In C++98, standard containers had a clear disadvantage compared to C-style arrays: you couldn’t conveniently initialize them with values inline. For example, you could write:
 
@@ -290,7 +290,7 @@ In terms of performance, especially for dynamic objects, containers and arrays a
 
 
 
-# Uniform Initialization
+## Uniform Initialization
 
 You may have noticed that I used curly braces `{}` to initialize objects in the code. This is indeed a new syntax introduced in C++11, which can replace many uses of parentheses `()` during variable initialization. This is called **uniform initialization**.
 
@@ -345,7 +345,7 @@ A major caveat of this syntax is that if a class has both a constructor that use
 
 
 
-# Default Member Initialization
+## Default Member Initialization
 
 In C++98, class data members could only be initialized inside constructors. This wasn’t a problem by itself, but in practice, when a class has many data members and multiple constructors, it becomes tedious and error-prone to manually initialize everything—especially when adding new members and potentially forgetting to initialize them in all constructors.
 

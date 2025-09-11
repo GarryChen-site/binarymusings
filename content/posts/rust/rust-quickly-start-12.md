@@ -29,7 +29,7 @@ So, you could say **the type system is purely a tool**: the compiler performs st
 
 Now, can you understand why Rust’s type system is so strict when it comes to type issues (always throwing errors)?
 
-# Basic concepts and classifications of type systems
+## Basic concepts and classifications of type systems
 
 Before specifically talking about Rust’s type system, let’s first clarify some concepts of type systems and reach a basic shared understanding.
 
@@ -59,7 +59,7 @@ You can look at the following diagram to better clarify the relationships betwee
 
 ![type system concepts](images/rust-12-01.webp)
 
-# Rust Type System
+## Rust Type System
 
 Okay, now that we’ve mastered the basic concepts and classifications of type systems, let’s look at Rust’s type system.
 
@@ -113,7 +113,7 @@ Compared to dynamic type systems, one inconvenience of static type systems is th
 So next, we’ll first look at the basic data types Rust provides, then see how type inference works, and finally examine how Rust supports generics.
 
 
-# Data Types
+## Data Types
 
 In Lecture 2, we introduced the definitions of primitive types and compound types. Today we will take a closer look at how these two categories of types are designed in Rust.
 
@@ -131,7 +131,7 @@ In addition, based on Rust’s existing data types, you can also define your own
 
 ![programming data types](images/rust-02-01.webp)
 
-# Type Inference
+## Type Inference
 
 As a statically typed language, while it guarantees type safety at compile time, a big inconvenience is that code can become verbose, with type declarations required everywhere. Especially since Rust has so many data types, to reduce the burden on developers, Rust supports local type inference.
 
@@ -242,14 +242,14 @@ fn main() {
 This is because `const` and `static` usually define global variables, which can be used across multiple contexts. For readability, explicit type annotations are required.
 
 
-# Using Generics to Achieve Parametric Polymorphism
+## Using Generics to Achieve Parametric Polymorphism
 
 That’s it for defining and using types. As mentioned earlier, Rust uses generics to avoid requiring developers to implement separate algorithms for different types. In a static language without generics, coding can be painful. For example, think about `Vec<T>` — without generics, you’d have to implement a separate `Vec<T>` for each type `T`. That’s far too much work.
 
 So let’s look at how Rust supports generics. Today we’ll cover parametric polymorphism, which includes generic data structures and generic functions. In the next lecture, we’ll discuss ad-hoc polymorphism and subtype polymorphism.
 
 
-# Generic Data Structures
+## Generic Data Structures
 
 Rust has full support for generic (parameterized) data structures.
 
@@ -370,7 +370,7 @@ Adding constraints gradually ensures they only appear where necessary, giving th
 
 
 
-# Generic Functions
+## Generic Functions
 
 After understanding how generic data structures are defined and used, let’s look at generic functions—the idea is similar.
 **When declaring a function, we don’t have to specify concrete parameter or return types; instead, we can use generic parameters**. For functions, this is a higher level of abstraction.
@@ -417,7 +417,7 @@ At the same time, the generated binary can be relatively large, because the bina
 Another subtle issue: **because of monomorphization, distributing code as a binary loses the generic information.** If I write a library providing the above `id()` function, and another developer uses the binary version of my library, the original generic function must still exist in the binary to be callable. But after monomorphization, the original generic information is discarded.
 
 
-# Summary
+## Summary
 
 Today we introduced some basic concepts of the type system and Rust’s type system.
 

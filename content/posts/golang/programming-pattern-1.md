@@ -19,7 +19,7 @@ cover:
 ---
 
 
-# Slice
+## Slice
 
 First, let’s discuss **Slice**. In Go, a slice is not an array but a struct, defined as follows:
 
@@ -112,7 +112,7 @@ The new code uses the **Full Slice Expression**, where the final parameter is th
 
 
 
-# Deep Equality Comparison
+## Deep Equality Comparison
 
 When comparing objects that may be built-in types, arrays, structs, maps… copying a struct and comparing fields for equality requires *deep comparison*, not just shallow. For that, Go provides reflection with `reflect.DeepEqual()`. Here are some examples:
 
@@ -140,7 +140,7 @@ func main() {
 }
 ```
 
-# Interface Programming
+## Interface Programming
 Below, let’s look at some code containing two methods for printing a struct—one uses a function, the other uses a *method*.
 
 ```go
@@ -277,7 +277,7 @@ you can pass your type to `ioutil.ReadAll`.
 
 
 
-# Interface Completeness Check
+## Interface Completeness Check
 
 Go’s compiler doesn’t strictly require that a type implement *all* methods of an interface unless you use it. Here’s an example:
 
@@ -315,7 +315,7 @@ This declares an unused var, assigning a `*Square` pointer to a `Shape`. If `Squ
 This enforces interface compliance.
 
 
-# Time Management
+## Time Management
 
 Time handling is complex—time zones, formats, precision, etc. Always reuse existing libraries rather than roll your own. In Go, use `time.Time` and `time.Duration`:
 
@@ -327,7 +327,7 @@ Time handling is complex—time zones, formats, precision, etc. Always reuse exi
 When exchanging data externally, stick to [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339). For global, cross-timezone applications, store everything in UTC on all servers.
 
 
-# Performance Tips
+## Performance Tips
 
 Go is high-performance, but you should still care. Here are some practical tips:
 

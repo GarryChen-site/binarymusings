@@ -27,7 +27,7 @@ The reason ownership and lifetimes are so challenging to grasp isn't just becaus
 
 So in this lesson, we’ll take a different approach, starting from the behavior of a variable using the stack. We’ll explore the rationale behind Rust's design choices regarding ownership and lifetimes to help you fundamentally resolve these compilation issues.
 
-# What Happens to Variables During Function Calls
+## What Happens to Variables During Function Calls
 
 First, let’s examine what happens to variables during function calls in most programming languages we're familiar with, and the issues that arise.
 
@@ -73,7 +73,7 @@ For the issue of multiple references to heap memory, let’s first look at how m
 
 Current solutions mainly approach the issue from the perspective of managing references, each with its drawbacks. Reflecting on the function call process we just outlined, the fundamental issue is that heap memory can be referenced freely. So, can we restrict the behavior of references themselves from another angle?
 
-# Rust’s Solution
+## Rust’s Solution
 
 This idea opens new avenues, and Rust takes a unique approach.
 
@@ -85,7 +85,7 @@ Now that we have the idea, how can we implement restrictions on data reference b
 
 To answer this question, we first need to address: Who truly owns the data, or who holds the ultimate power over values? Should this power be shared or require exclusivity?
 
-# Ownership and Move Semantics
+## Ownership and Move Semantics
 
 Let’s start by addressing the question of whether the ultimate power over values can be shared or needs to be exclusive. Generally, we might agree that a value is best owned by a single owner, as shared ownership inevitably leads to ambiguity in usage and release, reverting us back to the old ways of tracing garbage collection (GC) or Automatic Reference Counting (ARC).
 
@@ -152,7 +152,7 @@ Rust considers this and provides two solutions:
 For now, let's look at the first solution we are discussing today: Copy semantics.
 
 
-# Copy Semantics and the Copy Trait
+## Copy Semantics and the Copy Trait
 
 Types that conform to Copy semantics will automatically perform a bitwise copy when you assign or pass parameters. This is straightforward to understand, but how is it implemented in Rust specifically?
 
@@ -228,7 +228,7 @@ I recommend running this code yourself and carefully reading the compiler errors
 
 ![Trait Implementation](images/rust-07-05.webp)
 
-# Summary
+## Summary
 
 Today, we learned about Rust's single ownership model, Move semantics, and Copy semantics. Here’s a recap of the key points for you to review:
 

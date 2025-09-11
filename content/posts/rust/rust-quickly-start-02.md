@@ -23,10 +23,10 @@ Today, we will continue to outline other basic concepts frequently encountered i
 
 By revisiting these concepts, I hope you can solidify your foundational knowledge in software development. This is crucial for understanding many challenging aspects in Rust, such as ownership, dynamic dispatch, and concurrent processing.
 
-# Data
+## Data
 Data is the object that programs manipulate. A program that does not process data is meaningless. Let’s first review concepts related to data, including values and types, pointers, and references.
 
-# Values and Types
+## Values and Types
 Strictly speaking, a type distinguishes between values. It includes information about the length of the value in memory, alignment, and the operations that can be performed on the value. A value is an instance of data that conforms to a specific type. For example, 64u8 is of the u8 type, which corresponds to an integer entity of one byte in size, with a value range of 0 to 255. The specific entity here is 64.
 
 Values are stored as a sequence of bytes according to the representation defined by their type. For instance, the value 64 is stored in memory as 0x40 or 0b01000000.
@@ -49,7 +49,7 @@ Understanding these definitions might be challenging, so refer to the following 
 
 ![Data Types](images/rust-02-01.webp)
 
-# Pointers and References
+## Pointers and References
 
 In memory, a value is stored at a specific location, which corresponds to a memory address. A pointer is a value that holds this memory address, and it can be dereferenced to access the data at that address. Theoretically, a pointer can be dereferenced to any data type.
 
@@ -63,11 +63,11 @@ Depending on the type of data they point to, some references require not only a 
 
 For example, a pointer to the string “hello world” also includes the string’s length and capacity, using a total of three words, which occupy 24 bytes on a 64-bit CPU. Such pointers that carry more information than regular pointers are called fat pointers. Many data structure references are implemented using fat pointers.
 
-# Code
+## Code
 
 Data is the object that programs manipulate, while code is the main body of program execution. It is also the medium through which developers convert physical world requirements into digital logic. We will discuss functions, closures, interfaces, and virtual tables.
 
-# Functions, Methods, and Closures
+## Functions, Methods, and Closures
 
 A function is a fundamental element of programming languages, encapsulating a set of related statements and expressions that accomplish a specific task. Functions abstract repetitive behavior in code. In modern programming languages, functions are often first-class citizens, meaning they can be passed as parameters, returned as values, and included as part of composite types.
 
@@ -81,7 +81,7 @@ Refer to this diagram to help understand how a closure captures its contextual e
 
 ![Closure](images/rust-02-02.webp)
 
-# Interfaces and Virtual Tables
+## Interfaces and Virtual Tables
 
 Interfaces are a core part of software system development, reflecting the system designer’s abstract understanding of the system. As an abstraction layer, interfaces isolate the user from the implementation, significantly enhancing reusability and extensibility.
 
@@ -103,11 +103,11 @@ Because the virtual table records the interfaces that the data can execute, we c
 
 For example, if we want to implement different formatting tools for various languages for a Formatter interface in an editor, we can load all supported languages and their formatting tools into a hash table at editor load time. The hash table’s key is the language type, and the value is a reference to each formatting tool that implements the Formatter interface. This way, when a user opens a file in the editor, we can find the corresponding Formatter reference based on the file type and perform formatting operations.
 
-# Execution Modes
+## Execution Modes
 
 The way a program runs after it is loaded often determines its execution efficiency. Therefore, we will discuss concurrency, parallelism, synchronous and asynchronous execution, and several important concepts in asynchronous execution: Promise, async, and await.
 
-# Concurrency and Parallelism
+## Concurrency and Parallelism
 
 Concurrency and parallelism are concepts frequently encountered in software development.
 
@@ -121,7 +121,7 @@ Concurrency is a capability, while parallelism is a technique. Once our system h
 
 Many programming languages with high-concurrency capabilities embed an M:N scheduler in user programs, distributing M concurrent tasks reasonably across N CPU cores for parallel execution, maximizing program throughput.
 
-# Synchronous and Asynchronous
+## Synchronous and Asynchronous
 
 Synchronous execution means that after a task starts, subsequent operations are blocked until the task is completed. In software, most of our code is synchronous. For example, in a CPU, the next instruction in the pipeline is executed only after the previous one is completed. Similarly, if Function A calls Function B and then Function C sequentially, it will execute Function C only after Function B is completed.
 
@@ -145,13 +145,13 @@ If you are not familiar with the term Promise, in many languages that support as
 
 Generally, async defines a task that can be executed concurrently, while await triggers the concurrent execution of the task. In most languages, async/await is syntactic sugar that uses a state machine to wrap Promises, making asynchronous calls feel similar to synchronous calls and making the code easier to read.
 
-# Programming Paradigms
+## Programming Paradigms
 
 To better maintain code during continuous iteration, we introduce various programming paradigms to enhance code quality. Finally, let’s talk about generic programming.
 
 If you come from weakly-typed languages like C, Python, or JavaScript, generic programming is a concept and skill you need to master. Generic programming involves two aspects: the generics of data structures and the generic usage of those data structures in code.
 
-# Generics of Data Structures
+## Generics of Data Structures
 
 First, let’s discuss generics in data structures, often referred to as parameterized types or parametric polymorphism. Consider the following data structure:
 
@@ -173,7 +173,7 @@ This is a good question. We need to constrain S using interfaces. Therefore, lan
 Generics in data structures provide a high level of abstraction. Just as humans use numbers to abstract the quantity of specific things and invent algebra to further abstract specific numbers, generics allow us to delay binding, making data structures more general and widely applicable. This also greatly reduces code duplication and improves maintainability.
 
 
-# Generic Code
+## Generic Code
 
 The other aspect of generic programming is writing generic code using these data structures. When we use generic structures, the related code also requires additional abstraction.
 
@@ -186,7 +186,7 @@ In the C implementation on the left, several operations are implicitly tied to `
 Similarly, this code can be used in broader contexts, making it simpler and easier to maintain.
 
 
-# Summary
+## Summary
 
 Today, we discussed four categories of fundamental concepts: data, code, runtime methods, and programming paradigms.
 
