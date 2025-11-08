@@ -171,9 +171,6 @@ Modern CPU architectures heavily favor contiguous memory access. `vector`'s cont
 The main downside of `vector` is that resizing may require relocating many elements. If you know in advance that the container will grow large, call `reserve()` early — this can bring significant performance gains.
 
 
-Here’s the full English translation of your text:
-
-
 ## deque
 
 `deque` stands for **double-ended queue**. Its main purpose is to support:
