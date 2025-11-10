@@ -93,7 +93,7 @@ The second expression is more interesting. `std::move(ptr1)` forcibly converts a
 
 You can think of `std::move(ptr1)` as a **named rvalue**. To distinguish it from unnamed pure rvalues (`prvalue`), C++ calls such expressions **xvalues** (expiring values). Unlike lvalues, **xvalues** cannot have their address taken — which they share in common with prvalues. Both xvalues and prvalues fall under the broader category of **rvalues**. This diagram may help clarify:
 
-![another angle](images/cpp-03-02.png)
+![another angle of value category](images/cpp-03-02.png)
 
 Finally, note that **value category** (lvalue/rvalue) and **value type** (value type/reference type) are two entirely separate concepts.
 

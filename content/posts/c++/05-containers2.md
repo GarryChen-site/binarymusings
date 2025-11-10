@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/cpp-05-00.jpg
   hiddenInList: true
-  caption: "Associative"
+  caption: "C++ Associative Containers"
 
 ---
 

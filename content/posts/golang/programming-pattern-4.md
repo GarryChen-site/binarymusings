@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-04-00.webp
   hiddenInList: true
-  caption: "Control"
+  caption: "Golang IOC"
 
 ---
 

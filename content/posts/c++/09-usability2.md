@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/cpp-09-00.jpg
   hiddenInList: true
-  caption: "Literal"
+  caption: "Modern C++ Features Guide"
 
 ---
 

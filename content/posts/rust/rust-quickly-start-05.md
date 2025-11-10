@@ -18,11 +18,11 @@ cover:
 ---
 
 
-In the previous lesson, we wrote the HTTPie tool using just over 100 lines of code. If you're eager for more, today we'll create another practical example to explore more of Rust's capabilities.
+In the previous article, we wrote the HTTPie tool using just over 100 lines of code. If you're eager for more, today we'll create another practical example to explore more of Rust's capabilities.
 
 Again, if you don't fully understand the code, don't worry. Just follow along line by line, run the code, and feel the difference between Rust and the languages you're familiar with. Observe the coding style and get your code running—understanding every detail isn't necessary right now.
 
-Today's example is a common requirement we encounter in our work: building a web server to provide certain services. Similar to the previous lesson with HTTPie, we'll reimplement an existing open-source tool in Rust. Today, we'll tackle a slightly larger project: building an image server similar to [Thumbor](https://github.com/thumbor/thumbor).
+Today's example is a common requirement we encounter in our work: building a web server to provide certain services. Similar to the previous article with HTTPie, we'll reimplement an existing open-source tool in Rust. Today, we'll tackle a slightly larger project: building an image server similar to [Thumbor](https://github.com/thumbor/thumbor).
 
 ## Thumbor
 

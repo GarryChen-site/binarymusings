@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-09-00.webp
   hiddenInList: true
-  caption: "Pipeline"
+  caption: "Go Pipeline Pattern"
 
 ---
 

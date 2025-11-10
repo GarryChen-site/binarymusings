@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-07-00.jpg
   hiddenInList: true
-  caption: "Generics"
+  caption: "Golang Generics"
 
 ---
 

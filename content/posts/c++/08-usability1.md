@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/cpp-08-00.jpg
   hiddenInList: true
-  caption: "Deduction"
+  caption: "Modern C++ Deduction"
 
 ---
 
@@ -22,7 +22,7 @@ cover:
 
 **Usability Improvement I: Automatic Type Deduction and Initialization**
 
-In previous lessons, we've already touched on some of the features introduced in C++11. In the next two lessons, we’ll focus on the usability improvements brought by modern C++ (C++11/14/17).
+In previous articles, we've already touched on some of the features introduced in C++11. In the next two articles, we’ll focus on the usability improvements brought by modern C++ (C++11/14/17).
 
 
 
@@ -169,7 +169,7 @@ This is typically used when the return type is complex or depends on the types o
 
 
 
-## Class Template Argument Deduction**
+## Class Template Argument Deduction
 
 If you've used `std::pair`, you probably don’t write it like this:
 

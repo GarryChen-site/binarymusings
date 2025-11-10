@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-01-00.webp
   hiddenInList: true
-  caption: "Memory Management"
+  caption: "Rust Memory Management"
 
 ---
 
@@ -43,7 +43,7 @@ To represent this string, three words are used:
 
 In a 64-bit system, these three words occupy 24 bytes.
 
-![string](/images/rust-01-01.webp)
+![string presentation](/images/rust-01-01.webp)
 
 Earlier, we mentioned that the content of a string is stored on the heap, while the pointer to the string and related information are stored on the stack. Now, itâ€™s time to test your understanding of memory fundamentals: when should data be placed on the stack, and when should it go on the heap?
 
@@ -62,7 +62,7 @@ We know that the stack grows from the top down. At the very bottom of a programâ
 
 During the call, a new frame allocates enough space to store the register context. A copy of the general-purpose registers used in the function is saved on the stack. When the function call ends, the original register context can be restored from the copy, as if nothing happened. Additionally, the local variables needed by the function are also reserved when the frame is allocated.
 
-![frame](images/rust-01-02.webp)
+![function call frame](images/rust-01-02.webp)
 
 So, how is the size of a frame determined when a function runs?
 
@@ -118,7 +118,7 @@ As mentioned earlier, stack memory is reclaimed after the function call ends, an
 
 On the other hand, each block of heap memory needs to be explicitly released, giving heap memory a more flexible lifecycle that allows data sharing between different call stacks.
 
-![heap](/images/rust-01-03.webp)
+![heap memory lifecycle](/images/rust-01-03.webp)
 
 ## Problems with Heap Allocation
 

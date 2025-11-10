@@ -74,7 +74,7 @@ Third, garbage collection involves various strategies and implementations design
 
 The following figure shows a simple allocation process:
 
-![Figure 1](/images/cpp-01-1.webp)
+![simple allocation process](/images/cpp-01-1.webp)
 
 In the state shown in Figure 1e, the memory manager cannot satisfy memory allocation requests larger than 4 in length. However, in the state shown in Figure 1f, any single memory request of length 7 or less can be satisfied.
 
@@ -144,7 +144,7 @@ int main(){
 ```
 Stack changes during execution of this code:
 
-![Figure 2](/images/cpp-01-2.webp)
+![stack changes during execution](/images/cpp-01-2.webp)
 
 In our example, the stack grows upwards. In most computer architectures, including x86, the stack grows towards lower addresses, so the upper part represents lower addresses. According to architectural conventions, a function can only use the stack space above the stack pointer when it enters the function. When a function calls another function, it pushes the parameters onto the stack (ignoring cases where registers are used for parameter passing), then pushes the address of the next assembly instruction onto the stack, and jumps to the new function.
 

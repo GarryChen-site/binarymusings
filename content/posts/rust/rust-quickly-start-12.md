@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-12-00.webp
   hiddenInList: true
-  caption: "rust-type-system-generics"
+  caption: "rust type system overview"
 
 ---
 

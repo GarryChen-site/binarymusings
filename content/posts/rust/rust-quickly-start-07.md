@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-07-00.webp
   hiddenInList: true
-  caption: "ownership and lifetimes are the foundation of Rust's memory safety model"
+  caption: "ownership and lifetimes in Rust"
 
 ---
 
@@ -25,7 +25,7 @@ Many beginners in Rust struggle at this point. They continue learning with only 
 
 The reason ownership and lifetimes are so challenging to grasp isn't just because they address memory safety in a unique way; another significant factor is that current materials are not beginner-friendly. They often jump straight into explaining Copy/Move semantics without clarifying why they are used.
 
-So in this lesson, we’ll take a different approach, starting from the behavior of a variable using the stack. We’ll explore the rationale behind Rust's design choices regarding ownership and lifetimes to help you fundamentally resolve these compilation issues.
+So in this article, we’ll take a different approach, starting from the behavior of a variable using the stack. We’ll explore the rationale behind Rust's design choices regarding ownership and lifetimes to help you fundamentally resolve these compilation issues.
 
 ## What Happens to Variables During Function Calls
 
@@ -107,7 +107,7 @@ Under the constraints of these three ownership rules, we can see how the referen
 
 The `data` in the `main()` function becomes invalid after being moved to `find_pos()`, and the compiler ensures that subsequent code in `main()` cannot access this variable, thus maintaining a unique reference to the heap memory.
 
-You might have a small question: the parameter `v` passed to `find_pos()` is also moved, right? Why is it not marked in gray in the diagram? Let’s set this question aside for now; by the end of this lesson, you’ll have the answer.
+You might have a small question: the parameter `v` passed to `find_pos()` is also moved, right? Why is it not marked in gray in the diagram? Let’s set this question aside for now; by the end of this article, you’ll have the answer.
 
 Now, let’s write some code to deepen our understanding of ownership.
 
@@ -147,7 +147,7 @@ Rust considers this and provides two solutions:
 
 1. If you do not want the ownership of a value to be transferred, outside of Move semantics, Rust offers [Copy semantics](https://doc.rust-lang.org/std/marker/trait.Copy.html). If a data structure implements the Copy trait, it will use Copy semantics. This means that when you assign or pass a parameter, the value will be automatically copied bitwise (shallow copy).
 
-2. If you do not want the ownership of a value to be transferred and cannot use Copy semantics, you can **"borrow" the data**. We will discuss "borrowing" in detail in the next lesson.
+2. If you do not want the ownership of a value to be transferred and cannot use Copy semantics, you can **"borrow" the data**. We will discuss "borrowing" in detail in the next article.
 
 For now, let's look at the first solution we are discussing today: Copy semantics.
 
@@ -226,7 +226,7 @@ I recommend running this code yourself and carefully reading the compiler errors
 
 **Additionally**, [the official documentation](https://doc.rust-lang.org/std/marker/trait.Copy.html) on the page introducing the `Copy` trait includes all the data structures in the Rust standard library that implement the `Copy` trait. When you visit the documentation for any particular data structure, you can also check the *Trait Implementation* section to see if it implements the `Copy` trait.
 
-![Trait Implementation](images/rust-07-05.webp)
+![Trait Implementation](images/rust-07-06.webp)
 
 ## Summary
 
@@ -241,6 +241,6 @@ By using the single ownership model, Rust addresses the problem of heap memory b
 
 Since these are new concepts, they can be somewhat challenging to learn. But if you focus on the core idea—**that Rust restricts arbitrary referencing behavior through single ownership**—understanding the design logic behind these concepts becomes much easier.
 
-In the next lesson, we will continue learning about Rust's ownership and lifetimes, specifically how to “borrow” data when you don’t want to transfer ownership and can’t use Copy semantics...
+In the next article, we will continue learning about Rust's ownership and lifetimes, specifically how to “borrow” data when you don’t want to transfer ownership and can’t use Copy semantics...
 
 ---

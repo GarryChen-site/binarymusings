@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-06-00.webp
   hiddenInList: true
-  caption: "SQL"
+  caption: "Rust SQL Query Engine"
 
 ---
 

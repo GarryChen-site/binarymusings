@@ -14,7 +14,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-01-00.jpg
   hiddenInList: true
-  caption: "Slice"
+  caption: "Golang Slice"
 
 ---
 
@@ -33,7 +33,7 @@ type slice struct {
 
 Illustrated graphically, an empty slice looks like this:
 
-![empty slice](images/go-01-01.webp)
+![golang empty slice](images/go-01-01.webp)
 
 Anyone familiar with C/C++ knows that using a pointer to an array in a struct leads to shared data! Now let’s look at some operations on a slice:
 
@@ -52,7 +52,7 @@ For the code above:
 2. Then assign to the elements at indices 3 and 4 of the array pointed to by `foo`.
 3. Next, slice `foo` to assign to `bar`, then modify `bar[1]`.
 
-![shared memory](images/go-01-02.webp)
+![golang slice shared memory](images/go-01-02.webp)
 
 From the diagram, we see that because `foo` and `bar` share memory, modifications via either one affect the other.
 
@@ -67,7 +67,7 @@ a[2] = 42
 
 In this snippet, slicing `a[1:16]` assigns to `b`, so `a` and `b` share memory. Calling `append()` on `a` causes it to reallocate memory, causing `a` and `b` to no longer share, as shown in the following diagram:
 
-![append example](images/go-01-03.webp)
+![golang slice append example](images/go-01-03.webp)
 
 From the diagram, you can see that `append()` increases `a`’s capacity to 64 and its length to 33. It’s important to note: **when `cap` is insufficient, `append()` reallocates to increase capacity; if capacity is sufficient, it does not reallocate!**
 
@@ -94,7 +94,7 @@ func main() {
 
 In this example, `dir1` and `dir2` share memory. Even though `dir1` is appended, because its capacity is sufficient, it extends into `dir2`’s memory region. The illustration below shows changes in `cap` and `len` for both.
 
-![reallocation example](images/go-01-04.webp)
+![golang slice reallocation example](images/go-01-04.webp)
 
 To fix this, change one line:
 

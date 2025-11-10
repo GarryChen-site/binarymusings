@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-03-00.webp
   hiddenInList: true
-  caption: ""
+  caption: "Rust Web Code Case"
 
 ---
 
@@ -224,7 +224,7 @@ When defining `UserId`/`TopicId`, we also used the `Copy` and `Clone` derive mac
 
 A Simple Overview of Rust for Defining Variables, Functions, and Data Structures
 
-![basic syntax](images/rust-03-02.webp)
+![rust basic syntax](images/rust-03-02.webp)
 
 ## Control Flow
 
@@ -312,7 +312,7 @@ However, unlike Python, Rust ranges do not support negative numbers. Therefore, 
 
 Below is a summary of Rust's main control flow mechanisms.
 
-![control flow](images/rust-03-03.webp)
+![rust control flow](images/rust-03-03.webp)
 
 ## Pattern Matching
 
@@ -395,7 +395,7 @@ As the scale of Rust code grows, it becomes impractical to contain all code in a
 
 In the project’s entry file (`lib.rs` or `main.rs`), use `mod` to declare other code files to load. If a module contains many parts, it can be placed in a directory with a `mod.rs` file that includes other files of that module. This file functions similarly to Python’s `__init__.py`. After this setup, you can import the module using `mod + directory name`.
 
-![organizing code](images/rust-03-04.webp)
+![organizing code in Rust](images/rust-03-04.webp)
 
 
 
@@ -423,7 +423,7 @@ When the codebase continues to grow, placing all code in one crate becomes ineff
 
 A workspace can contain one or more crates, and only the modified crates need to be recompiled. To build a workspace, create a `Cargo.toml` file in a directory, including all crates in the workspace, and then use `cargo new` to generate the corresponding crates.
 
-![creating a workspace](images/rust-03-05.webp)
+![creating a workspace use Cargo](images/rust-03-05.webp)
 
 ## Summary
 

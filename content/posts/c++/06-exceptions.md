@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/cpp-06-00.jpg
   hiddenInList: true
-  caption: "Exceptions"
+  caption: "C++ Exceptions"
 
 ---
 

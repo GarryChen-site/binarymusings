@@ -20,7 +20,7 @@ cover:
 
 When we assign variables, pass parameters, and return values from functions, if the data structure involved hasn't implemented the `Copy` trait, the ownership of the value is transferred by default using *Move semantics*. Once the ownership is transferred, the original variable can no longer access the data. However, if the data structure has implemented the `Copy` trait, *Copy semantics* will automatically be used to make a copy of the value, and the original variable will still be able to access the data.
 
-Although single ownership solves the problem of arbitrary sharing of values that occurs in other languages, it also introduces some inconveniences. In the previous lesson, we mentioned: **what if you don't want to transfer the ownership of a value, but also can't use *Copy semantics* because the data structure doesn't implement the `Copy` trait?** In that case, you can *borrow* the data, which is the topic of this lesson: Borrow semantics.
+Although single ownership solves the problem of arbitrary sharing of values that occurs in other languages, it also introduces some inconveniences. In the previous article, we mentioned: **what if you don't want to transfer the ownership of a value, but also can't use *Copy semantics* because the data structure doesn't implement the `Copy` trait?** In that case, you can *borrow* the data, which is the topic of this lesson: Borrow semantics.
 
 ## Borrow Semantics
 
@@ -50,7 +50,7 @@ Rust’s references implement the `Copy` trait, so according to *Copy semantics*
 
 In Rust, references are first-class citizens, on par with other data types.
 
-Let’s demonstrate this using the code from the previous lesson that had two errors:
+Let’s demonstrate this using the code from the previous article that had two errors:
 
 ```rust
 fn main() {
@@ -243,7 +243,7 @@ Once we peel away the many layers of ownership rules, and dig deeper into the fu
 
 ## Summary
 
-Today, we learned about **Borrowing Semantics**, understanding the principles of read-only references and mutable references. Combined with the Move/Copy semantics from the previous lesson, Rust’s compiler ensures that the code does not violate a series of rules:
+Today, we learned about **Borrowing Semantics**, understanding the principles of read-only references and mutable references. Combined with the Move/Copy semantics from the previous article, Rust’s compiler ensures that the code does not violate a series of rules:
 
 - A value can have only one owner at a time. When the owner goes out of scope, the value it owns is discarded. Assignment or passing by value will cause the value to be **moved**, transferring ownership. Once ownership is transferred, the previous variable can no longer access the value.
 
@@ -257,5 +257,5 @@ Today, we learned about **Borrowing Semantics**, understanding the principles of
 
 ![a value within a certain scope](images/rust-08-04.webp)
 
-But there are always special cases. For example, in Directed Acyclic Graphs (DAGs), we want to bypass the “one owner per value” rule. How do we handle that? We’ll explore that in the next lesson...
+But there are always special cases. For example, in Directed Acyclic Graphs (DAGs), we want to bypass the “one owner per value” rule. How do we handle that? We’ll explore that in the next article...
 

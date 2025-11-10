@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/cpp-04-00.jpg
   hiddenInList: true
-  caption: "Containers"
+  caption: "C++ Containers"
 
 ---
 
@@ -49,7 +49,7 @@ Of course, these are just common features; each container serves a different pur
 
 Memory Layout of `string`:
 
-![string](images/cpp-04-01.png)
+![c++ string memory layout](images/cpp-04-01.png)
 
 The memory layout of `string` is very similar to `vector`, as you'll see later. In both structure and functionality, `string` and `vector` are closely related.
 
@@ -86,7 +86,7 @@ cout << "Nice to meet you, " << name << "!\n";
 
 Just like `string`, elements in a `vector` are stored in contiguous memory, and functions like `begin()`, `end()`, `front()`, and `back()` behave similarly. The memory layout is very similar to `string`:
 
-![vector](images/cpp-04-02.png)
+![vector memory layout](images/cpp-04-02.png)
 
 Besides the general container features, `vector` supports the following operations (partial list):
 
@@ -184,7 +184,7 @@ Compared to `vector`, `deque` has the following differences:
 
 Memory Layout:
 
-![deque](images/cpp-04-03.png)
+![c++ deque memory layout](images/cpp-04-03.png)
 
 * If you only insert or remove elements at the front or back, objects inside the `deque` never need to be moved.
 * Elements are partially contiguous (which is why there’s no `data()` function).
@@ -206,7 +206,7 @@ In C++, `list` represents a **doubly linked list**. Compared to `vector`, it’s
 
 Memory Layout:
 
-![list](images/cpp-04-04.png)
+![c++ list memory layout](images/cpp-04-04.png)
 
 Although `list` offers flexibility to insert elements at any position, since each element is allocated separately in non-contiguous memory, its iteration performance is worse than both `vector` and `deque`. This significantly offsets the theoretical advantage of not having to move elements during insertion or deletion.
 
@@ -255,7 +255,7 @@ Since `list` is a doubly linked list, is there a singly linked list in C++? The 
 
 Memory Layout:
 
-![forward_list](images/cpp-04-05.png)
+![c++ forward_list memory layout](images/cpp-04-05.png)
 
 Most C++ containers support an `insert` function to insert an element before a specified position. For `forward_list`, this is hard to achieve (think about why), so the standard library instead provides `insert_after`.
 
@@ -288,7 +288,7 @@ By default, `queue` is implemented on top of `deque`. Compared to `deque`, it ha
 
 Its actual memory layout depends on the underlying container. Conceptually, its structure looks like this:
 
-![queue](images/cpp-04-06.png)
+![c++ queue memory layout](images/cpp-04-06.png)
 
 Since `queue` doesn’t offer iterators, we cannot directly iterate through it. Instead, we typically write:
 
@@ -325,7 +325,7 @@ By default, `stack` is also implemented using `deque`, but conceptually it's mor
 
 Usually, `stack` is visualized like a vertical `vector`:
 
-![stack](images/cpp-04-07.png)
+![c++ stack memory layout](images/cpp-04-07.png)
 
 A small detail to be aware of: the direction of growth for `stack` differs from the system memory stack we discussed earlier. In `stack`, the bottom is the low address and grows upward; in memory management, it’s typically the reverse (high address at the bottom, grows downward). This distinction usually doesn’t matter when using `stack`, but it helps avoid confusion if you ever need to inspect memory structures.
 

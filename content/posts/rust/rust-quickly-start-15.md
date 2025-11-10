@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-quick/rust-15-00.webp
   hiddenInList: true
-  caption: "Data Structures with Smart Pointers"
+  caption: "Data Structures with Smart Pointers in Rust"
 
 ---
 
@@ -84,12 +84,12 @@ unsafe impl<#[may_dangle] T, A: Allocator> Drop for Vec<T, A> {
 
 So, to refine our definition — **in Rust, any data structure that needs to perform resource cleanup and implements `Deref` / `DerefMut` / `Drop` is a smart pointer**.
 
-According to this definition, besides `String`, we have already encountered many smart pointers in previous lessons — for example,
+According to this definition, besides `String`, we have already encountered many smart pointers in previous articles — for example,
 `Box<T>` and `Vec<T>` for heap memory allocation, and `Rc<T>` and `Arc<T>` for reference counting. Many other data structures, such as `PathBuf`, `Cow<'a, B>`, `MutexGuard<T>`, `RwLockReadGuard<T>`, and `RwLockWriteGuard<T>` are also smart pointers.
 
 Today, we’ll analyze three data structures that use smart pointers in depth: `Box<T>` (for allocating memory on the heap), `Cow<'a, B>` (for copy-on-write), and `MutexGuard<T>` (for data locking).
 
-Finally, we’ll try implementing our own smart pointer. By the end of this lesson, you should not only understand smart pointers more deeply but also be able to build your own when needed to solve specific problems.
+Finally, we’ll try implementing our own smart pointer. By the end of this article, you should not only understand smart pointers more deeply but also be able to build your own when needed to solve specific problems.
 
 ## `Box<T>`
 

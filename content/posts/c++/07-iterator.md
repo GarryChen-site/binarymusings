@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/cpp-07-00.jpg
   hiddenInList: true
-  caption: "Iterators"
+  caption: "C++ Iterators"
 
 ---
 
@@ -59,7 +59,7 @@ Both input and output iterators are built on top of a more basic concept — the
 The relationships between the different iterator categories can be visualized as follows:
 
 
-![iterator hierarchy](images/cpp-07-01.webp)
+![c++ iterator hierarchy](images/cpp-07-01.webp)
 
 
 While iterators are usually objects, it’s important to note that **raw pointers also satisfy all of these iterator requirements** — they are valid iterators. This shouldn’t be surprising, since the entire iterator concept was essentially abstracted from the behavior of pointers. In fact, in many implementations, a `vector`'s iterator is simply a raw pointer.

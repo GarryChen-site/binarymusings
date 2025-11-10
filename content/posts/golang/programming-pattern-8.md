@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-08-00.webp
   hiddenInList: true
-  caption: ""
+  caption: "Golang Decorator Pattern"
 
 ---
 

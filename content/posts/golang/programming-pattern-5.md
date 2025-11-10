@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-05-00.jpg
   hiddenInList: true
-  caption: "Kubernetes"
+  caption: "Golang Visitor Pattern"
 
 ---
 

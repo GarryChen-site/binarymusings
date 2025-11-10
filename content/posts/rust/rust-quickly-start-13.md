@@ -684,7 +684,7 @@ For example, the `From` trait, because the entire trait carries generics, and na
 ## Summary
 Today we gave a complete introduction to how traits are defined and used, including the most basic traits, traits with associated types, and generic traits. We also reviewed doing static dispatch via traits and using trait objects for dynamic dispatch.
 
-Today’s content is quite a lot. You can also use the diagram below to review the main points of this lesson:
+Today’s content is quite a lot. You can also use the diagram below to review the main points of this article:
 ![summary of traits](images/rust-13-04.webp)
 
 Traits, as an abstraction over the same behavior across different data structures, allow us **during development to first determine the system’s behavior based on user needs, abstract these behaviors into traits, and then gradually decide what data structures to use and how to implement these traits for those data structures**.

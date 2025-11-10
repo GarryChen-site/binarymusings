@@ -13,11 +13,11 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-04-00.webp
   hiddenInList: true
-  caption: "Command-line tool"
+  caption: "Rust Command-line tool"
 
 ---
 
-In the previous lesson, we learned the basics of Rust syntax. Now, let's put that knowledge into practice by writing a small CLI tool. You might encounter some unfamiliar syntax, but don't worry about understanding everything right away. Treat it like copying for now.
+In the previous article, we learned the basics of Rust syntax. Now, let's put that knowledge into practice by writing a small CLI tool. You might encounter some unfamiliar syntax, but don't worry about understanding everything right away. Treat it like copying for now.
 
 ## HTTPie
 
@@ -44,7 +44,7 @@ This process can be seen in the diagram below:
 Let's look at the libraries needed to implement these features:
 
 - For command-line parsing, Rust offers several libraries. We'll use the officially recommended `clap`.
-- For the HTTP client, we used `reqwest` in the previous lesson. We'll continue with it, but this time we'll try its asynchronous interface.
+- For the HTTP client, we used `reqwest` in the previous article. We'll continue with it, but this time we'll try its asynchronous interface.
 - For formatted output, to make the output as readable as HTTPie's Python version, we'll use the `colored` library for colorful terminal output.
 - Additionally, we'll need a few more libraries: `anyhow` for error handling, `jsonxf` for formatting JSON responses, `mime` for handling MIME types, and `tokio` for asynchronous processing.
 

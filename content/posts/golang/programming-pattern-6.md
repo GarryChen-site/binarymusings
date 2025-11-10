@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-06-00.webp
   hiddenInList: true
-  caption: "map-reduce"
+  caption: "Golang Map Reduce Filter"
 
 ---
 
@@ -124,7 +124,7 @@ fmt.Printf("%v\n", out)
 
 The diagram below is a metaphor that vividly illustrates the semantics of Map-Reduce. It’s very useful in data processing.
 
-![map-reduce](images/go-06-01.png)
+![semantic of Map-Reduce](images/go-06-01.png)
 
 ## Business Example
 

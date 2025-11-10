@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/rust-02-00.webp
   hiddenInList: true
-  caption: "Concepts"
+  caption: "Fundamental Programming Concepts in Rust"
 
 ---
 
@@ -47,7 +47,7 @@ Many languages do not support tagged unions and instead offer enumerations (enum
 
 Understanding these definitions might be challenging, so refer to the following diagram for better clarity.
 
-![Data Types](images/rust-02-01.webp)
+![Rust Data Types](images/rust-02-01.webp)
 
 ## Pointers and References
 
@@ -79,7 +79,7 @@ Generally, if a programming language treats functions as first-class citizens, i
 
 Refer to this diagram to help understand how a closure captures its contextual environment.
 
-![Closure](images/rust-02-02.webp)
+![closure presentation](images/rust-02-02.webp)
 
 ## Interfaces and Virtual Tables
 
@@ -97,7 +97,7 @@ Therefore, when generating this reference, we need to construct a fat pointer th
 
 The diagram below shows the process of a Vec data type being type-erased at runtime, generating a reference to the Write interface.
 
-![Virtual Table](images/rust-02-03.webp)
+![virtual table](images/rust-02-03.webp)
 
 Because the virtual table records the interfaces that the data can execute, we can dynamically dispatch different implementations for an interface at runtime based on context.
 

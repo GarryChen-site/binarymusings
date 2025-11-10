@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-02-00.jpg
   hiddenInList: true
-  caption: "Error"
+  caption: "Golang Error Handling"
 
 ---
 

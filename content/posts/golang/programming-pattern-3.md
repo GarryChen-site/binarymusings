@@ -13,7 +13,7 @@ author: ["Garry Chen"]
 cover:
   image: images/go-03-00.jpg
   hiddenInList: true
-  caption: "Function"
+  caption: "Golang Functional Options Pattern"
 
 ---
 

@@ -19,7 +19,7 @@ cover:
 
 
 
-In the previous lecture, we introduced a class `shape_wrapper` that could, to some extent, function as a smart pointer. By using this “smart pointer,” resource management can be simplified, fundamentally eliminating the possibility of resource (including memory) leaks. In this lecture, we’ll take it a step further and demonstrate how to evolve `shape_wrapper` into a fully functional smart pointer. You’ll see that a smart pointer is essentially a natural extension of RAII for resource management.
+In the previous article, we introduced a class `shape_wrapper` that could, to some extent, function as a smart pointer. By using this “smart pointer,” resource management can be simplified, fundamentally eliminating the possibility of resource (including memory) leaks. In this lecture, we’ll take it a step further and demonstrate how to evolve `shape_wrapper` into a fully functional smart pointer. You’ll see that a smart pointer is essentially a natural extension of RAII for resource management.
 
 ## Recap
 
@@ -583,7 +583,7 @@ smart_ptr<T> dynamic_pointer_cast(const smart_ptr<U>& other) noexcept{
 
 ## Summary
 
-In this lesson, we started with a basic `shape_wrapper` implementation and built a reference-counted smart pointer. While our `smart_ptr` lacks some features compared to `std::shared_ptr`, it includes most of the commonly used functionalities. By now, you should have a deeper understanding of smart pointers and how they work.
+In this article, we started with a basic `shape_wrapper` implementation and built a reference-counted smart pointer. While our `smart_ptr` lacks some features compared to `std::shared_ptr`, it includes most of the commonly used functionalities. By now, you should have a deeper understanding of smart pointers and how they work.
 
 
 ---
