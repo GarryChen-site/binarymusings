@@ -1,14 +1,14 @@
 ---
-title: "Data structure: the hash table of the core components of the software system, how to arrange the memory?"
+title: "Rust HashMap: Swiss Tables, SIMD, and Memory Layout"
 
-description: ""
+description: "Deep dive into Rust HashMap implementation with Swiss Tables, quadratic probing, SIMD lookup, and memory layout optimizations for high performance."
 
-summary: ""
+summary: "Explore how Rust's HashMap uses Swiss Tables with SIMD lookup and quadratic probing. Learn the memory layout, ctrl tables, and why Google spends 1% CPU time on hash operations."
 
 date: 2025-11-16
 series: ["Rust"]
 weight: 1
-tags: []
+tags: ["rust", "hashmap", "data-structures", "simd", "performance"]
 author: ["Garry Chen"]
 cover:
   image: images/rust-quick/rust-17-00.webp
@@ -19,7 +19,7 @@ cover:
 
 In the previous article, we delved deeply into slices, comparing arrays, lists, strings, and their relationships with slices and slice references. Today, we will continue discussing another extremely important collection container in Rust: HashMap, or hash tables. 
 
-If we talk about the most important and frequently appearing data structures in software development, hash tables definitely rank among them. Many programming languages even incorporate hash tables as a built-in data structure into the core of the language. For example, PHP's associative arrays, Python's dictionaries, JavaScript's objects and Maps. 
+If we talk about the most important and frequently appearing data structures in software development, hash tables definitely rank among them. Many programming languages even incorporate hash tables as a built-in data structure into the core of the language. For example, PHP's associative `array`, Python's `dict`, JavaScript's `object` and `Map`. 
 
 In a [CppCon 2017](youtube.com/watch?t=210&v=ncHmEUmJZf4&feature=youtu.be) talk by Google engineer Matt Kulukundis, it was mentioned that 1% of CPU time on Google's servers worldwide is spent on hash table computations, and over 4% of memory is used to store hash tables. This sufficiently demonstrates the importance of hash tables. 
 
@@ -29,7 +29,9 @@ We know that hash tables are similar to lists, both used to handle data structur
 
 ## Rust's Hash Table 
 
-So, what kind of hash table does Rust provide for us? What does it look like? What is its performance? Let's start learning from the official documentation. If you open the [HashMap](https://doc.rust-lang.org/std/collections/struct.HashMap.html) documentation, you will see this sentence:
+So, what kind of hash table does Rust provide for us? What does it look like? What is its performance? Let's start learning from the official documentation. 
+
+If you open the [HashMap](https://doc.rust-lang.org/std/collections/struct.HashMap.html) documentation, you will see this sentence:
 
 > A hash map implemented with quadratic probing and SIMD lookup.
 
@@ -130,7 +132,7 @@ The final `alloc` field here, like the `marker` in `RawTable`, is just a placeho
 
 ## Basic usage methods of HashMap. 
 
-Let's clarify the data structure first, then we'll look at the specific usage methods. Using a Rust hash map is straightforward; it provides a series of very convenient methods, making it very similar to using them in other languages. You can easily understand it by checking the [documentation](https://doc.rust-lang.org/std/collections/struct.HashMap.html). Let's write some code to try it out. 
+Let's clarify the data structure first, then we'll look at the specific usage methods. Using a Rust hash map is straightforward; it provides a series of very convenient methods, making it very similar to using them in other languages. You can easily understand it by checking the [documentation](https://doc.rust-lang.org/std/collections/struct.HashMap.html). Let's write some code to try it out:
 
 ```rust
 
@@ -183,7 +185,7 @@ We can see that when `HashMap::new()` is called, it does not allocate space, the
 
 ## The memory layout of HashMap. 
 
-However, through the public interface of HashMap, we cannot see how HashMap is laid out in memory. We still need to use the `std::mem::transmute` method we used before to print out the data structure. Let's modify the previous code. 
+However, through the public interface of HashMap, we cannot see how HashMap is laid out in memory. We still need to use the `std::mem::transmute` method we used before to print out the data structure. Let's modify the previous code:
 
 ```rust
 
@@ -220,7 +222,7 @@ fn explain<K, V>(name: &str, map: HashMap<K, V>) -> HashMap<K, V> {
 }
 ```
 
-After running it, we can see. 
+After running it, we can see:
 
 ```plaintext
 empty: bucket_mask 0x0, ctrl 0x1056df820, growth_left: 0, items: 0
@@ -236,7 +238,7 @@ On my OS X, initially, when the hash map is empty, the ctrl address appears to b
 
 Earlier, while exploring the HashMap data structure, it was mentioned that ctrl is an address pointing to the ctrl area at the end of the hash map's heap address. Therefore, we can calculate the starting address of the hash map's heap memory from this address. 
 
-Because the hash map has 8 buckets (0x7 + 1), and the size of each bucket is the size of key (char) + value (i32), which is 8 bytes, the total is 64 bytes. For this example, subtracting 64 from the ctrl address gives the starting address of the hash map's heap memory. Then, we can use rust-gdb / rust-lldb to print this memory. 
+Because the hash map has 8 buckets (0x7 + 1), and the size of each bucket is the size of key (char) + value (i32), which is 8 bytes, the total is 64 bytes. For this example, **subtracting 64 from the ctrl address gives the starting address of the hash map's heap memory**. Then, we can use rust-gdb / rust-lldb to print this memory. 
 
 Here, I use Linux's rust-gdb to set breakpoints and check the state of the hash map with one, three, four values, and after deleting one value. 
 
@@ -306,7 +308,7 @@ Breakpoint 1, hashmap2::explain (name=..., map=...) at src/hashmap2.rs:32
 
 This output contains a lot of information; let's carefully analyze it with the help of a diagram. 
 
-First, after inserting the first element 'a': 1, the memory layout of the hash map is as follows. 
+First, after inserting the first element 'a': 1, the memory layout of the hash map is as follows: 
 
 ![inserted first element](/images/rust-quick/rust-17-04.png)
 
@@ -338,7 +340,7 @@ Let's look at how HashMap uses the ctrl table for data queries. Suppose some dat
 
 6. if not, continue searching backward using quadratic probing (accumulating in multiples of 16) until found. 
 
-You can understand this algorithm with the help of the diagram below. 
+You can understand this algorithm with the help of the diagram below:
 
 ![simd lookup](/images/rust-quick/rust-17-05.png)
 
@@ -356,7 +358,7 @@ First, **the hash table expands by a power of two**, increasing from 4 buckets t
 
 This leads to the allocation of new heap memory, and then the original ctrl table and corresponding key-value data are moved to the new memory. In this example, because char and i32 implement the Copy trait, it's a copy operation; if the key type were String, only the 24-byte structure (ptr|cap|len) of the String would be moved, and the actual memory of the String would not need to change. 
 
-During the moving process, **hash reallocation** is involved. As shown in the figure below, you can see that the relative positions and their ctrl bytes for 'a' / 'c' haven't changed, but after recalculating the hash, the ctrl byte and position of 'b' have changed.
+During the moving process, **hash reallocation** is involved. As shown in the figure below, you can see that the relative positions and their ctrl bytes for 'a' / 'c' haven't changed, but after recalculating the hash, the ctrl byte and position of 'b' have changed:
 
 ![hash reallocation](images/rust-quick/rust-17-06.png)
 
@@ -364,15 +366,15 @@ During the moving process, **hash reallocation** is involved. As shown in the fi
 
 Now that we understand how the hash table grows, let's look at what happens when deleting a value. 
 
-When you want to delete a value from the hash table, the process is similar to searching: you first need to find the position of the key to be deleted. After finding the specific location, **there's no need to actually clear the memory; you only need to set its ctrl byte back to 0xff** (or mark it as deleted). This way, this bucket can be reused again. 
+When you want to delete a value from the hash table, the process is similar to searching: you first need to find the position of the key to be deleted. After finding the specific location, **there's no need to actually clear the memory; you only need to set its ctrl byte back to 0xff** (or mark it as deleted). This way, this bucket can be reused again:
 
 ![set deleted position to 0xff](images/rust-quick/rust-17-07.png)
 
-There is an issue here: when the key/value has additional memory, such as String, its memory is not immediately reclaimed. Only the next time the corresponding bucket is used, when the HashMap no longer owns this String, is the String's memory reclaimed. Let's look at the schematic diagram below. 
+There is an issue here: when the key/value has additional memory, such as String, its memory is not immediately reclaimed. Only the next time the corresponding bucket is used, when the HashMap no longer owns this String, is the String's memory reclaimed. Let's look at the schematic diagram below:
 
 ![memory reclamation](images/rust-quick/rust-17-08.png)
 
-Generally, this doesn't cause major problems, at most resulting in slightly higher memory usage. However, in some extreme cases, such as running after adding a large amount of content to the hash table and then deleting a large amount of content, you can release the unnecessary memory using shrink_to_fit / shrink_to.
+Generally, this doesn't cause major problems, at most resulting in slightly higher memory usage. However, in some extreme cases, such as running after adding a large amount of content to the hash table and then deleting a large amount of content, you can release the unnecessary memory using `shrink_to_fit` / `shrink_to`.
 
 ## Allow custom data structures to serve as hash keys
 
@@ -382,7 +384,7 @@ Sometimes, we need custom data structures to be keys in a HashMap. This requires
 
 * implementing `PartialEq`/`Eq` allows the data structure to be compared for equality and inequality. `Eq` implements reflexivity (a == a), symmetry (if a == b then b == a), and transitivity (if a == b and b == c, then a == c), while `PartialEq` does not implement reflexivity. 
 
-We can write an example to see how custom data structures can support this. 
+We can write an example to see how custom data structures can support this:
 
 ```rust
 
@@ -419,7 +421,7 @@ fn main() {
 
 Finally, we briefly discuss several other data structures related to HashMap. 
 
-Sometimes we only need to simply confirm whether an element is in a set, and using HashMap would be a waste of space. In such cases, HashSet can be used, which is a simplified version of HashMap and can be used to store unordered sets. Its definition is directly `HashMap<K, ()>`.
+Sometimes we only need to simply confirm whether an element is in a set, and using HashMap would be a waste of space. In such cases, HashSet can be used, which is a simplified version of HashMap and can be used to store unordered sets. Its definition is directly `HashMap<K, ()>`:
 
 ```rust
 
@@ -438,7 +440,7 @@ Using HashSet to check if an element belongs to a set is highly efficient.
 
 Another commonly used data structure alongside HashMap is BTreeMap. BTreeMap is a data structure that internally uses a [B-tree](https://en.wikipedia.org/wiki/B-tree) to organize the hash table. Additionally, BTreeSet is similar to HashSet and is a simplified version of BTreeMap, used to store ordered sets. 
 
-Here, we focus on BTreeMap, whose data structure is as follows. 
+Here, we focus on BTreeMap, whose data structure is as follows:
 
 ```rust
 pub struct BTreeMap<K, V> {
@@ -468,7 +470,7 @@ struct InternalNode<K, V> {
 }
 ```
 
-Unlike HashMap, BTreeMap is ordered. Let's look at an example. 
+Unlike HashMap, BTreeMap is ordered. Let's look at an example: 
 
 ```rust
 use std::collections::BTreeMap;
@@ -504,7 +506,7 @@ fn explain<K, V>(name: &str, map: BTreeMap<K, V>) -> BTreeMap<K, V> {
 
 ```
 
-Its output is as follows. 
+Its output is as follows:
 
 ```plaintext
 empty: height: 0, root node: 0x0, len: 0x0,
