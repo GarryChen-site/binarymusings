@@ -141,7 +141,7 @@ Iterators can be said to be the twin brothers of slice. **A slice is a view of c
 
 Through the `iter()` method of a slice, we can generate an iterator to iterate over the slice.
 
-In this [article](http://localhost:1313/posts/rust/rust-quickly-start-12/) Rust Type Inference, we have already seen the `iterator trait` (using the `collect` method to form a new list from filtered data). The `iterator trait` has a large number of methods, but in most cases, we only need to define its associated type `Item` and the `next()` method.
+In this [article]({{< ref "rust-quickly-start-12.md" >}}) Rust Type Inference, we have already seen the `iterator trait` (using the `collect` method to form a new list from filtered data). The `iterator trait` has a large number of methods, but in most cases, we only need to define its associated type `Item` and the `next()` method.
 * `Item` defines the type of data we get from the iterator each time;
 * `next()` is the method to get the next value from the iterator. When an iterator’s `next()` returns `None`, it means there is no more data in the iterator.
 

@@ -17,7 +17,7 @@ cover:
 
 ---
 
-In the previous article, we delved deeply into slices, comparing arrays, lists, strings, and their relationships with slices and slice references. Today, we will continue discussing another extremely important collection container in Rust: HashMap, or hash tables. 
+In the previous [article]({{< ref "rust-quickly-start-16.md" >}}), we delved deeply into slices, comparing arrays, lists, strings, and their relationships with slices and slice references. Today, we will continue discussing another extremely important collection container in Rust: HashMap, or hash tables. 
 
 If we talk about the most important and frequently appearing data structures in software development, hash tables definitely rank among them. Many programming languages even incorporate hash tables as a built-in data structure into the core of the language. For example, PHP's associative `array`, Python's `dict`, JavaScript's `object` and `Map`. 
 
@@ -65,7 +65,7 @@ Okay, understanding the theoretical knowledge of quadratic probing for hash tabl
 
 The other keyword, using SIMD for single instruction, multiple data lookup, is also closely related to the clever memory layout of Rust's hash table that we will discuss shortly.
 
-## HashMap Data Structure. 
+## HashMap Data Structure 
 
 Getting to the main point, let's see what the data structure of Rust's hash table looks like. Open the [source code](https://doc.rust-lang.org/src/std/collections/hash/map.rs.html#246) of the standard library:
 
@@ -130,7 +130,7 @@ In `RawTable`, the actually meaningful data structure is `RawTableInner`. The fi
 
 The final `alloc` field here, like the `marker` in `RawTable`, is just a placeholder type. For now, we only need to know that it is used to allocate memory on the heap.
 
-## Basic usage methods of HashMap. 
+## Basic usage methods of HashMap
 
 Let's clarify the data structure first, then we'll look at the specific usage methods. Using a Rust hash map is straightforward; it provides a series of very convenient methods, making it very similar to using them in other languages. You can easily understand it by checking the [documentation](https://doc.rust-lang.org/std/collections/struct.HashMap.html). Let's write some code to try it out:
 
@@ -183,7 +183,7 @@ shrinked: len: 3, cap: 3
 
 We can see that when `HashMap::new()` is called, it does not allocate space, the capacity is zero. **As key-value pairs are continuously inserted into the hash map, it grows by powers of two minus one**, with a minimum of 3. When data is removed from the table, the original table size remains unchanged. Only by explicitly calling `shrink_to_fit` will the hash map shrink. 
 
-## The memory layout of HashMap. 
+## The memory layout of HashMap
 
 However, through the public interface of HashMap, we cannot see how HashMap is laid out in memory. We still need to use the `std::mem::transmute` method we used before to print out the data structure. Let's modify the previous code:
 
